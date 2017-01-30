@@ -1,0 +1,126 @@
+body
+{
+	font-family: Arial;
+	font-size: 12px;
+	margin: 0;
+	color: #9c9c9c;
+}
+
+.logo {
+	height: 50px;
+	padding-right: 20%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.logo img {
+	width: 200px;
+}
+
+header {
+	font-size: 9px;
+	background-color: #F1F1F1;
+	border-top: 3px solid #DDDDDD;
+	border-bottom: 3px solid #DDDDDD;
+	padding: 2.5% 0% 2.5% 5%;
+	color: #000;
+}
+
+h2 {
+	color: #000;
+}
+
+
+.container {
+	width: 1024px;
+	margin: 0 auto;
+	display: flex;
+}
+
+.nav {
+	width: 75%;
+}
+
+.nav ul {
+	white-space: nowrap;
+}
+
+.nav ul li {
+	list-style-type: none;
+	padding-top: 8px;
+}
+
+.selected {
+	color: #e21f1f;
+	font-weight: bold;
+}
+
+.main-content {
+	padding-bottom: 5%;
+}
+
+.form {
+	display: inline-block;
+    width: 100%;
+    border: none;
+}
+
+.form .item {
+	color: #000;
+	font-weight: bold;
+	float: left;
+	padding-right: 5px;
+}
+
+table {
+	width: 100%;
+	border: 2px solid #F0F0F0;
+	margin-top: 20px;
+	padding: 20px;
+}
+
+.row-border {
+	border-top: 2px solid #F0F0F0;
+}
+
+th {
+	text-align: left;
+	padding-right: 15px;
+}
+
+.latest-messages {
+	padding-top: 5%;
+	padding-bottom: 5%;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.message {
+	width: 30%;
+	border-top: 3px solid #DDDDDD;
+	background-color: #F1F1F1;
+}
+
+.red {
+	color: #e21f1f;
+}
+
+.break {
+	border-top: 3px solid #DDDDDD;
+}
+
+footer {
+	margin-top: 2.5%;
+	margin-bottom: 10%;
+	display: flex;
+	width: 87%;
+	justify-content: flex-end;
+}
+
+footer div {
+	padding-right: 2%;
+}
+
+
+

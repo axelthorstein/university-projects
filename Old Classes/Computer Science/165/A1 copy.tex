@@ -1,0 +1,293 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\title{CSC165 Assignment 1}
+\author{Axel Steingrimsson\\
+  999707143,\\
+  \texttt{axel.steingrimsson@mail.utoronto.ca}}
+\date{\today}						% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\section{Question}
+\subsection{a)}
+$\forall k \in \mathbb{Z} : k \geq 1 \Rightarrow \frac{1}{(k+1)^2} <  \frac{1}{k} - \frac{1}{k+1} < \frac{1}{(k+0)^2}$
+
+\subsection{b)}
+$\forall k \in \mathbb{Z} : k \geq 1 \Rightarrow \frac{1}{(k+2)^2} <  \frac{1}{k+1} - \frac{1}{k+2} < \frac{1}{(k+0)^2}$
+
+\subsection{c)}
+$\forall k \in \mathbb{Z} : k \geq 1 \Rightarrow (k-2)^2 <  k^2 + k < (k+2)^2$
+
+\subsection{d)}
+Prove A: $\forall k \in \mathbb{Z} : k \geq 1 \Rightarrow \frac{1}{(k+1)^2} <  \frac{1}{k} - \frac{1}{k+1} < \frac{1}{(k+0)^2}$
+
+Assume $ 1 \leq k \in \mathbb{Z}$ 
+
+Let $ k \in \mathbb{Z} $
+
+\indent \indent Then $k \leq  k + k $
+
+\indent \indent \indent  $ \leq  k^2 $
+
+\indent \indent \indent $\leq k^2 + k$ 
+
+\indent \indent \indent $ < k^2 + 2k$ 
+\# $1 \leq k \in \mathbb{Z}$ then 2k will always be larger than k
+
+\indent \indent Then $ k^2 + k < k^2 + 2k$ 
+
+\indent \indent Then $ \frac{1}{k^2 + k} > \frac{1}{k^2 + 2k}$ 
+\# The larger denominator is the smaller number.
+
+\indent \indent Then $ \frac{1}{k} > \frac{1}{k^2 + k} > \frac{1}{k^2 + 2k}$ 
+
+\indent \indent Then $ \frac{1}{k} > \frac{1}{k^2 + k} > \frac{1}{k^2 + 2k + 1}$ 
+
+\indent \indent Then $ \frac{1}{(k+0)^2} >\frac{1}{k} - \frac{1}{k+1} > \frac{1}{(k+1)^2}$ 
+
+
+\break
+\noindent Prove C: $\forall k \in \mathbb{Z} : k \geq 1 \Rightarrow (k-2)^2 <  k^2 + k < (k+2)^2$
+
+Assume $ 1 \leq k \in \mathbb{Z}$ 
+
+Let $ k \in \mathbb{Z} $
+
+\indent \indent Then $k \leq  k + k $
+
+\indent \indent \indent  $ \leq k^2 $
+
+\indent \indent \indent $\leq k^2 + k$ 
+
+\indent \indent \indent $ > k^2 - k$ 
+\# $1 \leq k \in \mathbb{Z}$ k is always positive
+
+\indent \indent Then $ k^2 - k < k^2 + k < k^2 + 2k$ 
+
+\indent \indent Then $ k^2 - 4k < k^2 + k < k^2 + 4k$ 
+
+\indent \indent Then $ k^2 - 4k +4 < k^2 + k < k^2 + 4k + 4$ 
+\# $k^2 < k^2 + k $ since $1 \leq k \in \mathbb{Z}$ 
+
+\indent \indent Then $ (k-2)^2 <  k^2 + k < (k+2)^2$
+\# Algebra
+
+
+\noindent \textbf{Weaker A}
+
+Disproof: $\forall k \in \mathbb{Z} : k \geq -2 \Rightarrow \frac{1}{(k+1)^2} <  \frac{1}{k} - \frac{1}{k+1} < \frac{1}{(k+0)^2}$
+
+Assume $ -2 \leq k \in \mathbb{Z}$ 
+
+Let $ k = -2 $ 
+\# For 0, and -1 the middle rational functions of the inequality becomes undefined. 
+
+\indent \indent Then $ \frac{1}{(-2+1)^2} < \frac{1}{-2} - \frac{1}{-2+1} < \frac{1}{(-2+0)^2}$ 
+
+\indent \indent \indent $ = \frac{1}{1} \not< \frac{1}{2} \not< \frac{1}{4}$
+
+\noindent \textbf{Weaker C}
+
+Disproof:  $\forall k \in \mathbb{Z} : k \geq 0 \Rightarrow (k-2)^2 <  k^2 + k < (k+2)^2$
+
+Assume $ 0 \leq k \in \mathbb{Z}$ 
+
+Let $ k = 0 $ 
+
+\indent \indent Then $ (0-2)^2 <  0^2 + k < (0+2)^2$
+
+\indent \indent \indent $ = 4 \not< 0 < 4 $
+
+
+\noindent \textbf{Stronger A}
+
+Prove: $\forall k \in \mathbb{Z} : k \geq 2 \Rightarrow \frac{1}{(k+1)^2} <  \frac{1}{k} - \frac{1}{k+1} < \frac{1}{(k+0)^2}$
+
+Assume $ 2 \leq k \in \mathbb{Z} \land ( k \geq 1 \Rightarrow \frac{1}{(k+1)^2} <  \frac{1}{k} - \frac{1}{k+1} < \frac{1}{(k+0)^2} ) $
+
+\indent \indent Then $ k \geq 2 \geq 1$
+
+\indent \indent Then $ \frac{1}{(2+1)^2} <  \frac{1}{2} - \frac{1}{2+1} < \frac{1}{(2+0)^2} $
+
+\indent \indent Then $ \frac{1}{9} <  \frac{1}{6} < \frac{1}{4} $
+
+\indent \indent Therefore $ ( k \geq 1 \Rightarrow \frac{1}{(k+1)^2} <  \frac{1}{k} - \frac{1}{k+1} < \frac{1}{(k+0)^2} ) \Rightarrow (  k \geq 2 \Rightarrow \frac{1}{(k+1)^2} <  \frac{1}{k} - \frac{1}{k+1} < \frac{1}{(k+0)^2} ) $
+
+
+
+\noindent \textbf{Stronger C}
+
+Prove: $\forall k \in \mathbb{Z} : k \geq 2 \Rightarrow (k-2)^2 <  k^2 + k < (k+2)^2$
+
+Assume $ 2 \leq k \in \mathbb{Z} \land ( k \geq 1 \Rightarrow (k-2)^2 <  k^2 + k < (k+2)^2) $ 
+
+\indent \indent Then $ k \geq 2 \geq 1$
+
+\indent \indent Then $ (2-2)^2 <  2^2 + 2 < (2+2)^2 $
+
+\indent \indent Then $ 0 <  6 < 16 $
+
+\indent \indent Therefore $ ( k \geq 1 \Rightarrow (k-2)^2 <  k^2 + k < (k+2)^2) \Rightarrow (  k \geq 2 \Rightarrow (k-2)^2 <  k^2 + k < (k+2)^2 ) $
+
+
+
+
+\subsection{e)}
+
+\noindent Prove B: $\forall k \in \mathbb{Z} : k \geq 1 \Rightarrow \frac{1}{(k+2)^2} <  \frac{1}{k+1} - \frac{1}{k+2} < \frac{1}{(k+0)^2}$
+
+Assume $ ( k \geq 1 \land \frac{1}{(k+1)^2} <  \frac{1}{k} - \frac{1}{k+1} < \frac{1}{(k+0)^2} ) $
+
+Let $k \in \mathbb{Z}$
+
+\indent \indent Then $\frac{1}{(k+1)^2} <  \frac{1}{k} - \frac{1}{k+1} $
+
+\indent \indent Then $\frac{1}{(k+1)^2} <  \frac{1}{k} - \frac{1}{k+2} $
+
+\indent \indent Then $\frac{1}{(k+1)^2} \not<  \frac{1}{k+1} - \frac{1}{k+2} $
+\# when k = 1
+
+\indent \indent Then $\frac{1}{(k+2)^2} <  \frac{1}{k+1} - \frac{1}{k+2} $
+
+\indent \indent Then $\frac{1}{(k+2)^2} <  \frac{1}{k+1} - \frac{1}{k+2} < \frac{1}{(k+0)^2}$
+
+
+
+
+
+
+\section{Question}
+\subsection{a)}
+
+Prove $\forall x \in \mathbb{R} : [Q(x) \Rightarrow Q(x + 1)] $
+
+Assume $ Q(x)$
+
+Let $x \in \mathbb{R}$
+
+Let $p, q \in \mathbb{Z} $
+
+Let $m \in \mathbb{Q} $
+
+\indent \indent Then $ x = \frac{p}{q}$ 
+\# Definition of Rational Number
+
+\indent \indent Then $1 = \frac{1}{1} = \frac{p}{q} \in \mathbb{Q}$ 
+
+\indent \indent Then $x \land 1 \in \mathbb{Q}$ 
+
+\indent \indent Then $ (x+1) = m \in \mathbb(Q) $ 
+\# The properties of addition of Rational numbers
+
+\indent \indent Therefore $ (x+1) \in \mathbb(Q)$ 
+
+\subsection{b)}
+
+Prove $\forall x \in \mathbb{R} : [ \neg Q(x) \Rightarrow \neg Q(x + 1)] $
+
+Proof by Contradiction
+
+Assume $ \neg Q(x) \land Q(x + 1) $
+
+Let $x \in \mathbb{R}$
+
+Let $p, q \in \mathbb{Z} $
+
+Let $m \in \mathbb{Q} $
+
+\indent \indent Then $ x + 1 = \frac{p}{q}$ 
+
+\indent \indent Then $ x = \frac{p}{q} - 1$ 
+
+\indent \indent Then $ x = \frac{p}{q} - \frac{1}{1}$ 
+
+\indent \indent Then $ x \in \mathbb{Q}$ 
+\# The properties of subtraction of Rational numbers
+
+\indent \indent Therefore $ Q(x) \land \neg Q(x)$ 
+\# Contradiction 
+
+\subsection{c)}
+
+
+Prove: $\forall x, y \in \mathbb{R} : [ [ \neg Q(x) \land \neg Q(y) ] \Rightarrow \neg Q(xy)] $
+
+Disproof: $\exists x, y \in \mathbb{R} : [ [ \neg Q(x) \land \neg Q(y)]  \Rightarrow Q(xy)] $
+
+Assume $ \neg Q(x) \land  \neg Q(y) $
+
+Let $ x = \sqrt{2} \in \mathbb{R} $
+
+Let $ y = \sqrt{2} \in \mathbb{R} $
+
+\indent \indent Then $ xy = \sqrt{2} \cdot \sqrt{2} = 2$ 
+
+\indent \indent Then $ 2 = \frac{2}{1} \in \mathbb{Q}$ 
+
+\indent \indent Therefore $  \neg Q(x) \land \neg Q(y) \Rightarrow Q(xy)$ 
+
+\subsection{d)}
+
+
+Prove: $\forall x, y \in \mathbb{R} : [ [ \neg Q(xy) ] \Rightarrow Q(x) \land \neg Q(y)] $
+
+Assume $ [Q(x) \land \neg Q(y)] \land Q(xy)$
+
+Let $ x \in \mathbb{R} $
+
+Let $ y \in \neg \mathbb{Q} $
+
+Let $ p,q, s, t\in \mathbb{Z} $
+
+\indent \indent Then $ x = \frac{p}{q} $ 
+
+\indent \indent Then $ xy = \frac{s}{t}$ 
+\# Properties of Rational numbers
+
+\indent \indent Then $ y \cdot \frac{p}{q} = \frac{s}{t} $ 
+\# Subsitution
+
+\indent \indent Then $ y = \frac{sq}{tp} \in \mathbb{Q}$
+\# Algebra
+
+\indent \indent Then $ Q(y)$
+\# Which is a contradiction 
+
+
+\subsection{d) Converse} 
+
+Prove: $\forall x, y \in \mathbb{R} : [ [ Q(x) \land \neg Q(y) ] \Rightarrow \neg Q(xy)] $
+
+Disproof: $\exists x, y \in \mathbb{R} : [ [ Q(x) \land \neg Q(y) ] \Rightarrow Q(xy)] $
+
+ Assume $ [Q(x) \land \neg Q(y)]$
+ 
+ Let $ x = 0, y = \sqrt{2}$
+ 
+ \indent \indent Then $ xy = 0 \cdot \sqrt{2} = 0 $
+ 
+ \indent \indent Then $ 0 = \frac{0}{0} \land 0 \in \mathbb{Z} $
+  
+ \indent \indent Then $ 0 \in \mathbb{Q} $
+ 
+  \indent \indent Therefore $ Q(xy) $
+
+\end{document} 
+
+
+
+
+
+
+
+
+
+

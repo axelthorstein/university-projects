@@ -1,0 +1,139 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\title{CSC165 Assignment 1}
+\author{Axel Steingrimsson\\
+  999707143,\\
+  \texttt{axel.steingrimsson@mail.utoronto.ca}}
+\date{\today}						% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+
+
+
+\section{Question 1}
+
+\subsection{a)}
+C: Carol, D: Dan
+
+$B(C) \land B(D) \Rightarrow P(C, D) \land P(D, C)$
+
+Negation: If Carol and Dan don't play this game, then they haven't played it with each other.
+
+$\neg(B(C) \land B(D)) \Rightarrow \neg(P(C, D) \land P(D, C))$
+\subsection{b)}
+C: Class, B: Bob
+
+$\forall_x \in C, \neg P(x, B)$
+
+Negation: Everyone in the class has played this 2 person game with Bob
+
+$\forall_x \in C, P(x, B)$
+
+\subsection{c)}
+C: Class 
+
+$\exists_x \in C, \neg B(x)$
+
+Negation: There is no one in the class who does not play this 2 person game
+
+$\exists_x \in C, \neg B(x), x = 0$
+
+\subsection{d)}
+C: Class
+
+$\exists_x \in C, \exists_y \in C, \exists_z \in C, P(x, y) \Rightarrow P(x, z), y \neq z$
+
+Negation: Everyone in your class who plays this 2-person board game has played the game with only one person. 
+
+$\exists_x \in C, \exists_y \in C, \exists_z \in C, \neg P(x, y) \Rightarrow \neg P(x, z), y = z$
+
+
+\subsection{e)}
+C: Class
+
+$\exists_x \in C, \forall_y \in C, P(x, y)$
+
+Negation:  There is no student in your class has played this 2-person board game with everyone in your class. 
+
+$\exists_x \in C, \forall_y \in C, \neg P(x, y)$
+
+\section{Question 2}
+\subsection{a)}
+Bob has not traveled outside of the country.
+\subsection{b)}
+Some of the students have traveled to Denmark, but all of the students have traveled to France.
+\subsection{c)}
+Pete and Mona have both traveled to some countries, but they have not traveled to the same ones. 
+\subsection{d)} %come back to
+None of the students have traveled to the same countries. 
+\subsection{e)}
+There is more than one student that has traveled to all of the countries.
+\subsection{f)}
+All of the students have been to some countries. 
+\section{Question 3}
+\subsection{a)}
+Converse: If Socrates is Mortal, and all men are Mortal, then Socrates is a man
+	
+\noindent Contrapositive: If Socrates isn't mortal, and all men are Mortal, then Socrates isn't a man. 
+\subsection{b)}
+Converse: If the sailing race is held and the lifesaving demonstration
+will goes on, then it does not rain or it is not foggy.
+
+\noindent Contrapositive: If the sailing race is not held and the lifesaving demonstration
+does not go on, then it rains or it is foggy.
+\subsection{c)}
+Converse: If I'm sore today, then I was playing hockey yesterday
+
+\noindent Contrapositive: If I'm not sore today, then I didn't play hockey yesterday.
+\section{Question 4}
+\subsection{a)}
+$S1 \Rightarrow S2 $ Because There are no Natural numbers that satisfy S2, but the implication is still valid if S1 is False and S2 is True.
+\subsection{b)}
+$S3 \Rightarrow S2 $ For the elements in S3, 2 is the only prime number that divides into them, therefore if S3 is true, then S2 is true. 
+\subsection{c)}
+P: Prime number
+
+$\forall_x \in P, x^n = y \Leftrightarrow y \div x = n, S1 \Rightarrow S4 $ 
+
+There are cases for which S1 can be false, so the statement can remain true if S1 implies S4
+\subsection{d)}
+$S1 \Rightarrow S5 $
+
+There are an infinite possibility of number which i and j could represent, and S1 does not satisfy that set. 
+\section{Question 5}
+\subsection{a)}
+$((P \Rightarrow Q_1) \land (P \Rightarrow Q_2) \Leftrightarrow (P \Rightarrow (Q_1 \land Q_2))$
+
+$\Leftrightarrow ((P \Rightarrow Q_1) \land (P \Rightarrow Q_2))$
+
+$\Leftrightarrow ((\neg P \lor Q_1) \land (\neg P \lor Q_2))$ Implication 
+
+$\Leftrightarrow (\neg P \lor (Q_1 \land Q_2))$ Distribution Law
+
+$\Leftrightarrow (P \Rightarrow (Q_1 \land Q_2))$ Implication
+\subsection{b)}
+$ ((\exists_x \in D, P(x) \lor Q(x)) \Rightarrow R(y)) \Leftrightarrow (((\exists_x \in D, P(x) \Rightarrow R(y)) \land ((\exists_x \in D, Q(x)) \Rightarrow R(y)))$
+
+$\Leftrightarrow ((\exists_x \in D, P(x) \lor Q(x)) \Rightarrow R(y))$
+
+$\Leftrightarrow ((\forall_x \in D, \neg P(x) \land \neg Q(x)) \lor R(y))$ Implication
+
+$\Leftrightarrow ((\forall_x \in D, \neg P(x)) \lor R(y)) \land ((\forall_x \in D, \neg Q(x)) \lor R(y))$ Distribution Law
+
+$\Leftrightarrow ((\neg (\exists_x \in D, P(x)) \lor R(y)) \land ((\neg (\exists_x \in D, Q(x)) \lor R(y)))$ DeMorgans Law
+
+$\Leftrightarrow (((\exists_x \in D, P(x)) \Rightarrow R(y)) \land ((\exists_x \in D, Q(x)) \Rightarrow R(y)))$ Implication
+
+\end{document}  
+
+
+
