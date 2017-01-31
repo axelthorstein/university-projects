@@ -301,6 +301,11 @@ Adjacency Matrix - Laplacian Matrix
  \item (10 points) Let $m$ and $n$ be positive integers. Consider the \textit{grid graph} $G_{m,n} = (V, E)$ with vertex set $V = \{1, \dots, m\} \times \{1, \dots, n\}$, where vertices $u = (x, y) \in V$ and $v = (x', y') \in V$ are adjacent if and only if $|x - x'| + |y - y'| = 1$. Find necessary and sufficient conditions that $m$ and $n$ must satisfy in order for the graph $G_{m,n}$ to be Hamiltonian.
 \end{problem}
 \begin{solution}
+	From the definition we know that the grid graph is bipartite. 
+	Given that the graph is bipartite we know that in order to have a Hamiltonian cycle, 
+	one of the sets of vertices must have an even amount of members.
+	Thus the necessary and sufficient condition for the graph $G_{m,n}$ to be Hamiltonian 
+	is that either $m$ or $n$ must be even, or both.
 \end{solution}
 
 
@@ -311,9 +316,9 @@ Adjacency Matrix - Laplacian Matrix
  \end{center}
 \end{problem}
 \begin{solution}
-	We try to create a hamiltonian cycle. In a hamiltonian cycle, every vertex has degree 2. We take all vertices of degree 2. The vertices and both of there edges have to be part of the hamilton cycle (couloured red in the next picture). \\
+	We try to create a hamiltonian cycle. In a hamiltonian cycle, every vertex has degree 2. We take all vertices of degree 2. The vertices and both of there edges have to be part of the Hamilton cycle (coloured red in the next picture). \\
 	\includegraphics{A12_2.jpg} \\
-	In the next step, we look at the vertices of degree 3. They are already connected to a vertex of degree 2. There are two possible ways, to continue the path (couloured blue and green). The blue edges create a cycle and can not be part of the hamiltonian path. But if we use the green edge for every vertex, we create a big cycle and vertex number 10 is not part of it. Therefor, there exists no hamiltonian cycle  \\
+	In the next step, we look at the vertices of degree 3. They are already connected to a vertex of degree 2. There are two possible ways, to continue the path (coloured blue and green). The blue edges create a cycle and can not be part of the hamiltonian path. But if we use the green edge for every vertex, we create a big cycle and vertex number 10 is not part of it. Therefor, there exists no hamiltonian cycle  \\
 	\includegraphics{A12_3.jpg}
 \end{solution}
 
@@ -329,6 +334,13 @@ Adjacency Matrix - Laplacian Matrix
  \item (5 points) Show that a vertex $u$ in a graph $G$ is a cut-vertex if, and only if, there are vertices $v, w \in V(G) \setminus \{u\}$ such that every path between $v$ and $w$ contains the vertex $u$.
 \end{problem}
 \begin{solution}
+	Assume that a vertex $u$ in a graph $G$ is a cut-vertex.
+	Then $G - u$ would disconnect $G$ into at least two components. 
+	Let $v$ be a vertex that exists in $G - u$ and $w$ be belonging to a different component on $G - u$.
+	As $G$ is a connected graph it holds that there is a path between $v$ and $w$, 
+	but there is no path on $G - u$. This implies that $u$ lies on the path from 
+	$v$ to $w$ because the only difference between $G$ and $G - u$ is the cut-vertex $u$.\\
+	
 \end{solution}
 
 
