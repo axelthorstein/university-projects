@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  30 JAN 2017 18:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  31 JAN 2017 14:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -277,33 +277,37 @@ Overfull \hbox (61.57396pt too wide) in paragraph at lines 257--264
 File: hamiltonian.pdf Graphic file (type pdf)
 
 <use hamiltonian.pdf>
-Package pdftex.def Info: hamiltonian.pdf used on input line 305.
+Package pdftex.def Info: hamiltonian.pdf used on input line 310.
 (pdftex.def)             Requested size: 142.26393pt x 142.26378pt.
- <A12_2.jpg, id=35, 390.45876pt x 268.00125pt>
-File: A12_2.jpg Graphic file (type jpg)
 
-<use A12_2.jpg>
-Package pdftex.def Info: A12_2.jpg used on input line 310.
+Underfull \vbox (badness 4108) has occurred while \output is active []
+
+ [6]
+<A12_2.jpg, id=39, 390.45876pt x 268.00125pt>
+File: A12_2.jpg Graphic file (type jpg)
+ <use A12_2.jpg>
+Package pdftex.def Info: A12_2.jpg used on input line 315.
 (pdftex.def)             Requested size: 390.4578pt x 268.00058pt.
- <A12_3.jpg, id=36, 390.45876pt x 268.00125pt>
+
+<A12_3.jpg, id=40, 390.45876pt x 268.00125pt>
 File: A12_3.jpg Graphic file (type jpg)
  <use A12_3.jpg>
-Package pdftex.def Info: A12_3.jpg used on input line 312.
+Package pdftex.def Info: A12_3.jpg used on input line 317.
 (pdftex.def)             Requested size: 390.4578pt x 268.00058pt.
 
-Overfull \hbox (30.4578pt too wide) in paragraph at lines 308--314
+Overfull \hbox (30.4578pt too wide) in paragraph at lines 313--319
 [] 
  []
 
 
-Overfull \hbox (30.4578pt too wide) in paragraph at lines 308--314
+Overfull \hbox (30.4578pt too wide) in paragraph at lines 313--319
 []
  []
 
-[6 <./hamiltonian.pdf>]
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7 <./A12_2.jpg>] [8 <./A12_3.jpg>] (./ps2.aux)
+ [7 <./hamiltonian.pdf> <./A12_2.jpg>] [8 <./A12_3.jpg>] (./ps2.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -333,7 +337,7 @@ xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texl
 ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texli
 ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texliv
 e/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on ps2.pdf (8 pages, 236724 bytes).
+Output written on ps2.pdf (8 pages, 237269 bytes).
 PDF statistics:
  94 PDF objects out of 1000 (max. 8388607)
  64 compressed objects within 1 object stream

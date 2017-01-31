@@ -275,6 +275,11 @@ Adjacency Matrix - Laplacian Matrix
 \tiny{Hint: Add $k$ edges to $G$ so that it becomes Eulerian.}
 \end{problem}
 \begin{solution}
+	If we assume that for an integer $k$, we let $G$ be a connected graph that contains $2k$ vertices of odd degree. 
+	Then if we add a looped edge to each vertices of an odd degree, then we know that every vertex in $G$ is of an even degree. 
+	From this we can conclude that $G$ is a disjoint union of edge-disjoint cycles in $G$ given the properties of eulerian graphs,
+	such that $E(G) = E(G_1) \cup E(G_2) \cup \dots \cup E(G_k)$, and given that each vertex in each subgraph is of even degree 
+	we can say that all subgraphs, and $G$ itself are Eulerian. 
 \end{solution}
 
 
