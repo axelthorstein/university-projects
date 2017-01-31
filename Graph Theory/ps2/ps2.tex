@@ -49,7 +49,7 @@
 \thispagestyle{empty}
 
 {\small{\sc\noindent
-        Sebastian Plenz ({\tt sebastianp16@ru.is}) and Axel Steingrimsson ({\tt axels16@ru.is})
+        Sebastian Plenz ({\tt sebastianp16@ru.is})  and Axel Steingrimsson ({\tt axels16@ru.is})
 }}
 
 \rubrik{PROBLEM SET 2 (T-445-GRTH)}
@@ -67,11 +67,14 @@ You need to collect $\bf 65$ points to get a full score {\bf but} you cannot get
 \section{More on Trees ({\bf max 40}) }
 
 \begin{problem}
-\item (5 points)  
- Show that every tree $T$ has at least $\Delta(T)$ leaves, where $\Delta(T)$ denotes the maximum degree of $T$.
+\item (5 points) Show that every tree $T$ has at least $\Delta(T)$ leaves, where $\Delta(T)$ denotes the maximum degree of $T$.
 \end{problem}
 \begin{solution}
-	For a given tree $T$ we have that $\Delta(T)$ assumes there is at least one vertex $v_0$ \in $V$ such that $d(v_0) = \Delta(T)$. Then, as $T$ is connected given by the properties of tress, 
+	For a given tree $T$ we have that $\Delta(T)$ assumes there is at least one vertex $v_0 \in T$ such that $d(v_0) = \Delta(T)$. 
+	Let $T'$ be the subgraph that only contains $v_0$ and all of the vertices adjacent.
+	Then, as $T$ is connected given by the properties of tress, $V(T') = \Delta(T) - 1 = E(T')$. 
+	Then for each edge $e \in E(T')$ there exists a vertex $v'$ where $d(v') = 1$, that is, a leaf. 
+	Therefore every tree $T$ contains a subgraph where $\Delta(T)$ is equal to the number of leaves, so every tree $T$ has at least $\Delta(T)$ leaves. 
 \end{solution}
 
 \begin{problem}
@@ -80,7 +83,7 @@ You need to collect $\bf 65$ points to get a full score {\bf but} you cannot get
  with $\text{deg}_T(u_i) = d_i$ for each $i \in \{1, \dots, n \}$. 
 \end{problem}
 \begin{solution}
-	We consider $n\geq 2$, because $n=1$ is just a vertex withour edges. A tree on n vertices has $n-1$ edges. So, we come to the necessary condition 
+	We consider $n\geq 2$, because $n=1$ is just a vertex without edges. A tree on n vertices has $n-1$ edges. So, we come to the necessary condition 
 	$$ \sum\limits_{i=1}^{n}d_i=2(n-1) \vspace{20mm}. $$ 
 	Every tree has at least to leafs, so an other necessary condition is $d_1=d_2=1$. \\
 	If they are true, a sufficient condition is
@@ -96,6 +99,31 @@ You need to collect $\bf 65$ points to get a full score {\bf but} you cannot get
  \]
 \end{problem}
 \begin{solution}
+	
+	Assume for a given tree $T$, that ${\Delta} \geq 3$.
+	Assume $d_{\Delta}(n) \le \left \lfloor \frac{n-2}{\Delta - 1} \right \rfloor.$ 
+	Base case: $n \leq 3$, then there is no vertex of at least degree 3 and therefore the predicate holds. \\
+	Induction step: 
+	 Assume now that $n \geq 4$ and that $d_{\Delta}(k) \le \frac{k-1}{\Delta} $ 
+	 holds for all trees on $ k \leq n - 1$ vertices. 
+	 Let $T$ be a tree on n vertices with each vertex $v, d(v) \leq 3$. 
+	 Then taking $u \in D_\Delta(T)$, if you split $u$ by each of it's edges, 
+	 creating 3 components the number of vertices from each components combined would be equal to $V(T) + 2$.
+	 This implies that for each of the components, $c_1, c_2$, and $c_3$, $V(c_i) \leq n -2$. \\
+	 Therefore 
+\begin{equation} \label{eq1}
+\begin{split}
+  d_\Delta(n) & = D_\Delta(T) \\
+  & =  D_\Delta(c_3) +  D_\Delta(c_2) +  D_\Delta(c_3) + 1 \\
+ & \leq (\frac{c_1-1}{\Delta}) + (\frac{c_2-1}{\Delta}) + (\frac{c_3-1}{\Delta}) + 1 \\
+& = \frac{n-1}{\Delta} 
+\end{split}
+\end{equation}
+	Therefore 
+\[
+  d_{\Delta}(n) \le \left \lfloor \frac{n-2}{\Delta - 1} \right \rfloor.
+ \]
+	 
 \end{solution}
 
 
@@ -106,9 +134,9 @@ You need to collect $\bf 65$ points to get a full score {\bf but} you cannot get
 \end{subprob}
 \end{problem}
 \begin{solution}
-	a) We start by proofing the hint. Assume there are two disjoint longest paths in a tree T. Then, there exists a path, that connects the two paths and has no edges in common with the other two paths. This path connects a vertex $u$ from the first and $v$ from the second path. These vertices devide the longest paths in two parts. Take the longer part of each path and the new path. The new path is at least 1 longer than the longest path. This is a contradiction. \\
+	a) We start by proofing the hint. Assume there are two disjoint longest paths in a tree T. Then, there exists a path, that connects the two paths and has no edges in common with the other two paths. This path connects a vertex $u$ from the first and $v$ from the second path. These vertices divide the longest paths in two parts. Take the longer part of each path and the new path. The new path is at least 1 longer than the longest path. This is a contradiction. \\
 	Now assume that There are two longest paths with even length. By the first assumption, they have at least vertex in common. if the vertex is not the mid-vertex of one of those paths, take the longer part of each path. This creates a longer path than the longest, which is a contradiction again and proofs the claim. \\
-	b) If you take an other vertex than the common vertex $u$, you can find a path between this two vertices. The common vertex is the mid-vertex of a longest path. Contine the path between between $u$ and the common vertex with the part of the longest path, that was not used so far. The distance between the starting and the ending point is longer than the macimum distance from the common vertex to every other vertex. Becaus $u$ was arbitrary, the common vertex minimizes the maximum distance and is the center.
+	b) If you take an other vertex than the common vertex $u$, you can find a path between this two vertices. The common vertex is the mid-vertex of a longest path. Continue the path between between $u$ and the common vertex with the part of the longest path, that was not used so far. The distance between the starting and the ending point is longer than the maximum distance from the common vertex to every other vertex. Because $u$ was arbitrary, the common vertex minimizes the maximum distance and is the center.
 \end{solution}
 
 
@@ -119,7 +147,20 @@ You need to collect $\bf 65$ points to get a full score {\bf but} you cannot get
  $k$ of them internal and $2k+1$ of them leaves.
 \end{problem}
 \begin{solution}
+	Base case: Let $k = 1$, then the root is the only internal vertex, and $2 * k + 1 = 2 * 1 + 1 = $ leaf vertices.
+	Induction step: Assume that we have a ternary tree with $n = 3j+1$, j vertices being internal, and $2j +1$ vertices leaves. \\
+	For each addition to a full ternary tree $T$, 3 vertices must be added so that the total number of nodes increases as:
+\begin{equation} \label{eq1}
+\begin{split}
+n & = 3j + 1 \\
+n & = 3(j + 1) + 1 \\
+n & = 3(j + 2) + 1 \\
+\end{split}
+\end{equation}
+And so on where j is incremented by one. Then with each addition of 3 vertices the number of leaves increments only by two, 
+because one leaf becomes an internal node, as we can observe from removing the internal nodes from the formula we are left with $2j +1$ vertices leaves, as required. 
 \end{solution}
+
 
 
 
@@ -147,6 +188,45 @@ You need to collect $\bf 65$ points to get a full score {\bf but} you cannot get
 \end{center}
 \end{problem}
 \begin{solution}
+2160, 720, -1439.999999999999
+Adjacency Matrix - Laplacian Matrix
+\[
+\begin{bmatrix}
+    {0} & {0} & {0} & {0} & {0} & {0} & {0} \\
+    {0} & {5} & {0} & {0} & {0} & {0} & {0} \\
+    {0} & {0} & {5} & {0} & {0} & {0} & {0}\\
+    {0} & {0} & {0} & {5} & {0} & {0} & {0}\\
+    {0} & {0} & {0} & {0} & {5} & {0} & {0}\\
+    {0} & {0} & {0} & {0} & {0} & {2} & {0} \\
+    {0} & {0} & {0} & {0} & {0} & {0} & {2} \\
+\end{bmatrix}
+-
+\begin{bmatrix}
+    {0} & {-1} & {-1} & {-1} & {-1} & {0} & {0} \\
+    {-1} & {0} & {-1} & {-1} & {-1} & {-1} & {0} \\
+    {-1} & {-1} & {0} & {-1} & {-1} & {-1} & {0}\\
+    {-1} & {-1} & {-1} & {0} & {-1} & {-1} & {0}\\
+    {-1} & {-1} & {-1} & {-1} & {0} & {-1} & {-1}\\
+    {0} & {-1} & {-1} & {0} & {0} & {0} & {-1} \\
+    {0} & {0} & {0} & {0} & {-1} & {-1} & {0} \\
+\end{bmatrix}
+\\
+\]
+\\
+\[
+= det
+\begin{bmatrix}
+    {4} & {-1} & {-1} & {-1} & {-1} & {0} & {0} \\
+    {-1} & {5} & {-1} & {-1} & {-1} & {-1} & {0} \\
+    {-1} & {-1} & {5} & {-1} & {-1} & {-1} & {0}\\
+    {-1} & {-1} & {-1} & {5} & {-1} & {-1} & {0}\\
+    {-1} & {-1} & {-1} & {-1} & {5} & {-1} & {-1}\\
+    {0} & {-1} & {-1} & {0} & {0} & {2} & {-1} \\
+    {0} & {0} & {0} & {0} & {-1} & {-1} & {2} \\
+\end{bmatrix}
+= 1440
+\]
+
 \end{solution}
 
 

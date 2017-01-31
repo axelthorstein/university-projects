@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  30 JAN 2017 12:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  30 JAN 2017 18:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -145,7 +145,11 @@ Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 \c@prob_counter=\count101
 \c@sprob_counter=\count102
 
-(./ps2.aux)
+(./ps2.aux
+
+LaTeX Warning: Label `eq1' multiply defined.
+
+)
 \openout1 = `ps2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
@@ -249,71 +253,72 @@ LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              for symbol `textbackslash' on input line 61.
 
 [1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2] <st-count.pdf, id=22, 174.6525pt x 135.50626pt>
+[2] <st-count.pdf, id=21, 174.6525pt x 135.50626pt>
 File: st-count.pdf Graphic file (type pdf)
  <use st-count.pdf>
-Package pdftex.def Info: st-count.pdf used on input line 146.
+Package pdftex.def Info: st-count.pdf used on input line 187.
 (pdftex.def)             Requested size: 146.69377pt x 113.81102pt.
+ [3]
+Underfull \hbox (badness 10000) in paragraph at lines 214--216
 
-<A8.jpg, id=23, 421.575pt x 385.44pt>
+ []
+
+[4 <./st-count.pdf>] <A8.jpg, id=30, 421.575pt x 385.44pt>
 File: A8.jpg Graphic file (type jpg)
  <use A8.jpg>
-Package pdftex.def Info: A8.jpg used on input line 179.
+Package pdftex.def Info: A8.jpg used on input line 259.
 (pdftex.def)             Requested size: 421.57396pt x 385.43906pt.
 
-Overfull \hbox (61.57396pt too wide) in paragraph at lines 177--184
+Overfull \hbox (61.57396pt too wide) in paragraph at lines 257--264
 [] 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [3 <./st-count.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4 <./A8.jpg>] <hamiltonian.pdf, id=31, 226.8475pt x 226.8475pt>
+[5 <./A8.jpg>] <hamiltonian.pdf, id=34, 226.8475pt x 226.8475pt>
 File: hamiltonian.pdf Graphic file (type pdf)
- <use hamiltonian.pdf>
-Package pdftex.def Info: hamiltonian.pdf used on input line 225.
+
+<use hamiltonian.pdf>
+Package pdftex.def Info: hamiltonian.pdf used on input line 305.
 (pdftex.def)             Requested size: 142.26393pt x 142.26378pt.
-
-<A12_2.jpg, id=32, 390.45876pt x 268.00125pt>
+ <A12_2.jpg, id=35, 390.45876pt x 268.00125pt>
 File: A12_2.jpg Graphic file (type jpg)
- <use A12_2.jpg>
-Package pdftex.def Info: A12_2.jpg used on input line 230.
-(pdftex.def)             Requested size: 390.4578pt x 268.00058pt.
 
-<A12_3.jpg, id=33, 390.45876pt x 268.00125pt>
+<use A12_2.jpg>
+Package pdftex.def Info: A12_2.jpg used on input line 310.
+(pdftex.def)             Requested size: 390.4578pt x 268.00058pt.
+ <A12_3.jpg, id=36, 390.45876pt x 268.00125pt>
 File: A12_3.jpg Graphic file (type jpg)
  <use A12_3.jpg>
-Package pdftex.def Info: A12_3.jpg used on input line 232.
+Package pdftex.def Info: A12_3.jpg used on input line 312.
 (pdftex.def)             Requested size: 390.4578pt x 268.00058pt.
 
-Overfull \hbox (30.4578pt too wide) in paragraph at lines 228--234
+Overfull \hbox (30.4578pt too wide) in paragraph at lines 308--314
 [] 
  []
 
 
-Overfull \hbox (30.4578pt too wide) in paragraph at lines 228--234
+Overfull \hbox (30.4578pt too wide) in paragraph at lines 308--314
 []
  []
 
-[5 <./hamiltonian.pdf>]
+[6 <./hamiltonian.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [6 <./A12_2.jpg> <./A12_3.jpg>] [7] (./ps2.aux)
+ [7 <./A12_2.jpg>] [8 <./A12_3.jpg>] (./ps2.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 2918 strings out of 493014
- 37245 string characters out of 6133351
- 101349 words of memory out of 5000000
- 6259 multiletter control sequences out of 15000+600000
+ 2919 strings out of 493014
+ 37250 string characters out of 6133351
+ 107396 words of memory out of 5000000
+ 6260 multiletter control sequences out of 15000+600000
  13956 words of font info for 54 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 37i,4n,31p,788b,262s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,15n,31p,788b,266s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
@@ -328,10 +333,10 @@ xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texl
 ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texli
 ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texliv
 e/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on ps2.pdf (7 pages, 231124 bytes).
+Output written on ps2.pdf (8 pages, 236724 bytes).
 PDF statistics:
- 91 PDF objects out of 1000 (max. 8388607)
- 62 compressed objects within 1 object stream
+ 94 PDF objects out of 1000 (max. 8388607)
+ 64 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
