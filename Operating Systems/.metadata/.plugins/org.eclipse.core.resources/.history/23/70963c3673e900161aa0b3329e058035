@@ -1,0 +1,36 @@
+package com.ru.usty.threads;
+
+public class ThreadAssignment01Main {
+
+    private static final int NUMBER_OF_PROBLEMS = 30;
+    
+    Problem getProblem() {
+    	return Problematic.nextProblem();
+    }
+    
+    static void runProblem() {
+    	final Problem problem = getProblem(); 
+    	new Thread(new Runnable() {
+    		@Override
+    		public void run() {
+    			Solver.findAndPrintSolution(problem); 
+    		}
+    	}).start();
+    	}
+	}
+    
+    public static void main(String[] args) {
+        System.out.println("Processors: " + Runtime.getRuntime().availableProcessors());
+        System.out.println("Solutions:");
+
+        long startTime = System.currentTimeMillis();
+        
+        for (int i = 0; i < NUMBER_OF_PROBLEMS; i++) {
+        	runProblem();
+        }
+
+        System.out.println("All done");
+
+        System.out.println("Total time: " + (System.currentTimeMillis() - startTime) + " ms");
+    }
+}

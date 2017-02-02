@@ -358,17 +358,10 @@ Adjacency Matrix - Laplacian Matrix
  \item (10 points) Let $G$ be a connected graph. Show that if $C \subseteq E(G)$ has an even number of edges in common with every edge cut of $G$, then $C$ is an edge-disjoint union of cycles.
 \end{problem}
 \begin{solution}
-Proposition 4.5.7: Let C be a subset of edges in a connected graph G.
-Then C contains a cycle iff every spanning tree omits at least one edge from
-C.
-Proof: If C contains a cycle it is contained in no spanning tree, so every
-spanning tree omits at least one edge from C. Conversely, suppose C doesn?t
-contain a cycle. Then it lives in a spanning tree, so there?s a spanning tree
-which doesn?t omit an edge from C.
-Proposition 4.5.8: In a connected graph, every cycle and minimal edge
-cut have an even number of edges in common.
-Proof: Each cycle edge that jumps components has to have a mate that
-returns.
+
+	Let $C$ be a subset of edges in a connected graph $G$.
+	In a connected graph, every cycle and minimal edge cut have an even number of edges in common.
+	So if $C$ has an even number of edge cuts in common with $G$ then the resulting must be a set of edge-disjoint cycles. 
 \end{solution}
 
 
