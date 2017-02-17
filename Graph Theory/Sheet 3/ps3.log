@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  16 FEB 2017 17:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  17 FEB 2017 11:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -345,80 +345,84 @@ Package pdftex.def Info: A8.jpg used on input line 184.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [6 <./A6_5.jpg>] [7 <./A8.jpg>] <A12_1.jpg, id=48, 355.3275pt x 264.99pt>
-File: A12_1.jpg Graphic file (type jpg)
+ [6 <./A6_5.jpg>] [7 <./A8.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 222--249
 
-<use A12_1.jpg>
-Package pdftex.def Info: A12_1.jpg used on input line 243.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--249
+
+ []
+
+<A12_1.jpg, id=48, 355.3275pt x 264.99pt>
+File: A12_1.jpg Graphic file (type jpg)
+ <use A12_1.jpg>
+Package pdftex.def Info: A12_1.jpg used on input line 261.
 (pdftex.def)             Requested size: 355.32661pt x 264.98935pt.
- <A12_2.jpg, id=49, 380.42125pt x 364.36125pt>
+
+<A12_2.jpg, id=49, 380.42125pt x 364.36125pt>
 File: A12_2.jpg Graphic file (type jpg)
  <use A12_2.jpg>
-Package pdftex.def Info: A12_2.jpg used on input line 244.
+Package pdftex.def Info: A12_2.jpg used on input line 262.
 (pdftex.def)             Requested size: 380.4203pt x 364.36035pt.
 
 <A12_3.jpg, id=50, 457.71pt x 325.215pt>
 File: A12_3.jpg Graphic file (type jpg)
  <use A12_3.jpg>
-Package pdftex.def Info: A12_3.jpg used on input line 245.
+Package pdftex.def Info: A12_3.jpg used on input line 263.
 (pdftex.def)             Requested size: 457.7089pt x 325.2142pt.
 
-Overfull \hbox (20.4203pt too wide) in paragraph at lines 240--247
+Overfull \hbox (20.4203pt too wide) in paragraph at lines 258--265
 [] 
  []
 
 
-Overfull \hbox (97.7089pt too wide) in paragraph at lines 240--247
+Overfull \hbox (97.7089pt too wide) in paragraph at lines 258--265
 [] 
  []
 
-
+[8]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8]
+ [9 <./A12_1.jpg>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [9 <./A12_1.jpg> <./A12_2.jpg>] [10 <./A12_3.jpg>]
-<A15.jpg, id=60, 313.17pt x 147.55125pt>
+ [10 <./A12_2.jpg>] [11 <./A12_3.jpg>] <A15.jpg, id=64, 313.17pt x 147.55125pt>
 File: A15.jpg Graphic file (type jpg)
- <use A15.jpg>
-Package pdftex.def Info: A15.jpg used on input line 282.
+
+<use A15.jpg>
+Package pdftex.def Info: A15.jpg used on input line 311.
 (pdftex.def)             Requested size: 313.16922pt x 147.55087pt.
+ [12 <./A15.jpg>]
 Missing character: There is no â in font cmr10!
 Missing character: There is no • in font cmr10!
 Missing character: There is no   in font cmr10!
-
-<A17_1.jpg, id=61, 328.22626pt x 274.02374pt>
+ <A17_1.jpg, id=68, 328.22626pt x 274.02374pt>
 File: A17_1.jpg Graphic file (type jpg)
- <use A17_1.jpg>
-Package pdftex.def Info: A17_1.jpg used on input line 307.
-(pdftex.def)             Requested size: 328.22545pt x 274.02307pt.
 
-<A17_2.jpg, id=62, 382.42876pt x 328.22626pt>
+<use A17_1.jpg>
+Package pdftex.def Info: A17_1.jpg used on input line 336.
+(pdftex.def)             Requested size: 328.22545pt x 274.02307pt.
+ <A17_2.jpg, id=69, 382.42876pt x 328.22626pt>
 File: A17_2.jpg Graphic file (type jpg)
  <use A17_2.jpg>
-Package pdftex.def Info: A17_2.jpg used on input line 309.
+Package pdftex.def Info: A17_2.jpg used on input line 338.
 (pdftex.def)             Requested size: 382.42781pt x 328.22545pt.
 
-Overfull \hbox (22.42781pt too wide) in paragraph at lines 304--319
+Overfull \hbox (22.42781pt too wide) in paragraph at lines 333--348
 [] 
  []
 
-[11 <./A15.jpg>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [12 <./A17_1.jpg>] [13 <./A17_2.jpg>] (./ps3.aux)
+[13 <./A17_1.jpg>] [14 <./A17_2.jpg>] (./ps3.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
  2962 strings out of 493014
  37690 string characters out of 6133351
- 103343 words of memory out of 5000000
+ 101349 words of memory out of 5000000
  6294 multiletter control sequences out of 15000+600000
  12691 words of font info for 49 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
@@ -431,15 +435,16 @@ Here is how much of TeX's memory you used:
 sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
 /local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/lo
 cal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
-al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local
-/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/
-texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/t
-exlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/loc
-al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on ps3.pdf (13 pages, 360834 bytes).
+al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local
+/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
+exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/te
+xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/tex
+live/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local
+/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on ps3.pdf (14 pages, 371395 bytes).
 PDF statistics:
- 115 PDF objects out of 1000 (max. 8388607)
- 71 compressed objects within 1 object stream
+ 122 PDF objects out of 1000 (max. 8388607)
+ 76 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 

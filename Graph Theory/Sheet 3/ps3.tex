@@ -229,7 +229,24 @@ Prove this formula inductively by using contraction of a graph by an edge.
 	If all the vertices in $G$ have a degree $\geq 4$ then $ V < E / 2$
 	which means that $0 < 2$ which is a contradiction. 
 	So no vertex in a simple planar graph with no 3 cycles can have a degree larger than 3. \\
-	b) 
+	b) Let $G$ be a simple planar graph $G$. 
+	Then let $G'$ be a simple planar graph on $n\geq 4$ vertices, adding edges to $G'$,
+	such that $G \subset G'$
+	Then $G'$ cannot have any vertices with degree less than 3 as for any vertex of
+	degree 0 or 1 we could add an edge and preserve it as a planar graph.
+	Then if a vertex has a degree of two then the region would contain at least 4 vertices
+	and adding an edge to this block would still preserve it as a planar graph.
+	Therefore $G'$ cannot have any vertices with degree less than 3.
+	Assume $G'$ has at most 3 vertices of degree 5 or less. 
+	Then we have k vertices where $d(k) \leq 5$ and $k \leq 3$ and using Corollary 7.15 from the book. \\ \\
+$
+  2m(G') = \sum_{v \in V(G')} (d(v)) \geq 3k + 6(n - k) = 6n - 3k \geq 6n - 9.
+ $\\ \\
+ 	Therefore $2m(G) \geq 6n-9 $ so $m(G) \geq 3n - 4.5$.
+ 	Then we know from Corollary 7.15 from the book, derived from Euler's formula 
+	that $m(G) \leq 3n - 6$ holds, so $m(G) \geq 3n - 4.5$ is a contradiction.
+	And therefore $G$ has at least four vertices of degree less than 6.
+
 \end{solution}
 
 
@@ -257,7 +274,7 @@ Prove this formula inductively by using contraction of a graph by an edge.
 	If we use Euler's Formula, we get
 	$$ \frac 1 2 \cdot m -m + \frac{2}{3}\cdot m =2 $$
 	$$ \Leftrightarrow m= 12.$$
-	So the claim is proofed.
+	So the claim is proved.
 \end{solution}
 
 
@@ -266,6 +283,17 @@ Prove this formula inductively by using contraction of a graph by an edge.
  lengths from $u$ to $v$. Show that $G$ is planar. 
 \end{problem}
 \begin{solution}
+	As $G$ be a graph such that for every two vertices $u,v$, there are at most two vertex-disjoint paths of positive
+ lengths from $u$ to $v$.
+ 	Then we know that $G$ can never contain a homeomorphic subgraph of $K_5 $ or $K_{3, 3}$.
+	We can see this obviously for $K_5$ because two vertex disjoint paths between any vertices $u, v$ can
+	be found by tracing the outside of the graph, and a third vertex disjoint path can be found connecting every vertex 
+	through the middle of the graph. 
+	Therefore $K_5$ and every graph containing it as a homeomorphic subgraph has more than 2 vertex disjoint paths. 
+	As for $K_{3, 3}$, every vertex has a degree of three so it is possible to connect every pair of 
+	vertices in a three vertex disjoint paths, including every graph where $K_{3, 3}$ is a subgraph.\\ 
+	Therefore considering that every graph $G$ cannot contain $K_{3, 3}$ or $K_5$ as a homeomorphic subgraph
+	we can determine by Kuratowski and Wagner's classification that $G$ is planar. 
 \end{solution}
 
 
