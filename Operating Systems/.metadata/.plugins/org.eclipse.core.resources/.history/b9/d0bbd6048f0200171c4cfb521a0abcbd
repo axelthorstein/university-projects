@@ -1,0 +1,44 @@
+package com.ru.usty.elevator;
+
+import java.util.ArrayList;
+
+public class Elevator implements Runnable {
+
+	private ArrayList<Person> passengers;
+	private int currentFloor;
+	private int capacity;
+	private int ID;
+	private int numFloors;
+	
+	public Elevator(int id,int  numFloors, int capacity) {
+		this.currentFloor = 0;
+		this.capacity = capacity;
+		this.ID = id;
+		this.numFloors = numFloors;
+	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		new Thread().start();
+	}
+	
+	public boolean isFull() {
+		return passengers.size() == this.capacity;
+	}
+	
+	public int getNumPassengers() {
+		return this.passengers.size();
+	}
+	
+	public int getCurrentFloor() {
+		return this.currentFloor;
+	}
+
+	public String getElevatorId() {
+		return this.ID;
+	}
+	
+	
+
+}

@@ -1,0 +1,38 @@
+package com.ru.usty.elevator;
+
+public class Person implements Runnable {
+
+	private Elevator elevator;
+	private int startFloor;
+	private Object ID;
+	private int stopFloor;
+	private Thread thread;
+	
+	
+	public Person(int ID, int startFloor, int stopFloor){
+	        this.ID = ID;
+	        this.startFloor = startFloor;
+	        this.stopFloor = stopFloor;
+	        this.thread = new Thread(this, ""+this.Id);
+	}
+	
+	@Override
+	public void run(){
+        Elevator elevator;
+        while(true){
+            if(startFloor < stopFloor){
+                elevator = building.callUp(startFloor, ID);
+            } else {
+                elevator = building.callDown(startFloor, ID);
+            }
+
+            if (elevator.enter(this.ID)){
+                break;
+            }
+        }
+
+}
+
+	public Thread getThread() {
+		return this.thread;
+	}

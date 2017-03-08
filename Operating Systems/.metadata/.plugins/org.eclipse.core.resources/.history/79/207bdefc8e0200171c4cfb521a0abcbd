@@ -1,0 +1,26 @@
+package com.ru.usty.elevator;
+
+import java.util.ArrayList;
+
+public class Elevator implements Runnable {
+
+	private ArrayList<Person> passengers;
+	private int currentFloor;
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		new Thread().start();
+	}
+	
+	public int getNumPassengers() {
+		return this.passengers.size();
+	}
+	
+	public int getCurrentFloor() {
+		return this.currentFloor;
+	}
+	
+	
+
+}

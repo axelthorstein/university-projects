@@ -1,5 +1,0 @@
-package com.ru.usty.threads;
-
-public interface HelloRunnable {
-
-}
