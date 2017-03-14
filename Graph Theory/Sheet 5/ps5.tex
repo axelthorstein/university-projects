@@ -1,0 +1,195 @@
+\documentclass[a4paper,11pt]{amsart}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\parskip 1ex
+\parindent 0 pt
+
+\newcounter{temp}
+\newcounter{prob_counter}
+\newcounter{sprob_counter}
+
+\newenvironment{problem}
+{\begin{list}{{\bf \arabic{prob_counter}}}{
+      \usecounter{prob_counter}
+      \addtolength{\labelsep}{.6ex}
+      \addtolength{\itemsep}{4.3ex}
+      \setlength{\leftmargin}{1.4em}}
+      \setcounter{prob_counter}{\value{temp}}
+}
+{\setcounter{temp}{\value{prob_counter}}  
+  \end{list}
+}
+
+\newenvironment{subprob}
+{
+  \begin{list}{{\bf \alph{sprob_counter}}}{
+      \usecounter{sprob_counter}
+      \addtolength{\labelsep}{.6ex}
+      \addtolength{\itemsep}{.5ex}
+      \setlength{\leftmargin}{1.7em}}
+}
+{\end{list}}
+
+\newenvironment{solution}{\textbf{Solution.}}{\qed}
+
+\newcommand{\rubrik}[1]{\bigskip \begin{center}{\bf #1}\end{center} \medskip}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+
+
+
+
+\begin{document}
+
+\pagestyle{empty}
+\thispagestyle{empty}
+
+{\small{\sc\noindent
+        Sebastian Plenz ({\tt sebastianp16@ru.is}) and Tigran Tonoyan ({\tt tigran@ru.is})
+}}
+
+\rubrik{PROBLEM SET 5 (T-445-GRTH)}
+
+You need to collect $\bf 60$ points to get a full score {\bf but} you cannot get more than {\bf X} points (in total) from a problem section with annotation {\bf max X}.
+
+{\bf Please make sure to:}\\
+1. Write your name/email(s) on your work (replace my name above).\\
+2. Write your answers in \texttt{{\textbackslash}begin\{solution\} ... {\textbackslash}end\{solution\}} blocks.\\
+3. Write clear and concise proofs: points may be deducted for vagueness.
+
+
+
+
+\section{Independent Sets ({\bf max 30})}
+
+\begin{problem}
+ \item (10 points) Find a recursive formula for counting the number of \emph{maximal} independent sets in $P_n$ $(n\ge 1)$. Use it to derive a formula counting the number of maximal independent sets in $C_n$. 
+\end{problem}
+
+\begin{solution}
+	We order the vertices from one end to the other. Take $v_1$. From every set, create two new sets by adding the vertices $v_{i+2}$ or $v_{i+3}$ to the set of $v_i$ was the last vertex. Redo this step as often as it is possible(both new vertices still exist). If only $v_{i+2}$exists, add it to the set. Do the same again but starting with $v_2$. Count all sets. This is the number of maximal independent sets in $P_n$. \\
+	For $C_n$ we can do the same, but if we start with $v_1$, it is not allowed to have $v_n$ in the same set. So the first and the second part create the same amount of independent sets. Just do the algorithm with starting at $v_2$ and double the number. 
+\end{solution}
+
+\begin{problem}
+ \item (5 points) Show that:
+\begin{subprob} \item  For every simple graph $G$, $\alpha(G)\ge \frac{|V(G)|}{D(G)+1}$.
+\item For every planar graph $G$, $\alpha(G)\ge \frac{|V(G)|}{4}$.
+\end{subprob}
+\end{problem}
+\begin{solution}
+	b) From the lecture we know $ \alpha (G) \geq \frac{|V(G)|}{\chi (G)}$. The 4-color-theorem says every planar graph has chromatic number $\leq 4$. In total
+	$$ \alpha (G) \geq \frac{|V(G)|}{\chi (G)} \geq \frac{|V(G)|}{4} $$.
+\end{solution}
+
+\begin{problem}
+ \item (7 points) Show that:
+\begin{subprob} \item  For every simple graph $G$, $\alpha(G)\le |V(G)|-\delta(G)$.
+\item For every simple triangle-free graph $G$, $\alpha(G)\ge \Delta(G)$.
+\end{subprob}
+\end{problem}
+\begin{solution}
+	a) Take an arbitrary maximal independent set and a vertex $v$ from this set. All neighbors of this vertex can not be in the maximal independent set and this are at least $\delta(G)$. So $\alpha(G)\le |V(G)|-\delta(G)$.
+	b) Take a vertex $v$ with degree $\Delta(G)$. Take all adjacent vertices of $v$. This is an indepent set, because the graph is triangle-free and has size $\Delta(G)$. So the claim holds.
+\end{solution}
+
+\begin{problem}
+ \item (10 points) Show that every simple triangle-free graph has an independent set of size $\sqrt{n}$.
+\end{problem}
+
+
+
+\section{Bipartite Matching ({\bf max 26})}
+
+
+\begin{problem}
+ \item (5 points) Let $G=(X\cup Y, E)$ be a simple bipartite graph. Suppose that there is 
+ a $k \in \NN$ such that $d(x) \ge k \ge d(y)$ for all $x \in X, y \in Y$. Show that $G$ 
+ has a matching saturating $X$ (covering all of $X$).
+\end{problem}
+
+\begin{problem}
+ \item (6 points) Let $G=(X\cup Y, E)$ be a simple bipartite graph. Let $A$ be the set of vertices in $G$ of
+ maximum degree. Show that $G$ has a matching saturating $A \cap X$.
+\end{problem}
+
+
+\begin{problem}
+ \item (6 points) Let $G=(X\cup Y, E)$ be a simple bipartite graph such that $d(x) \ge 1$ for all $x \in X$
+ and $d(x) \ge d(y)$ for all $\{x,y\} \in E$ ($x \in X, y \in Y$). Show that $G$ has a matching saturating $X$.
+\end{problem}
+
+
+\begin{problem}
+ \item (10 points) Let $G=(X\cup Y, E)$ be a simple bipartite graph containing a perfect matching.
+ Prove that there is a vertex $x \in X$, such that for every incident edge $\{x,y\}$, there is a perfect matching
+  that contains $\{x,y\}$.
+\end{problem}
+
+
+
+\begin{problem}
+ \item (6 points) Let $X,Y$ be disjoint independent sets in a simple graph $G$, such that $|X|=\alpha(G)$. Prove that $G[X\cup Y]$ has a matching of size $|Y|$.
+\end{problem}
+\begin{solution}
+	For every vertex in $Y$, we can find a vertex in $X$ and connect them, such that it is a matching. This is possible because otherwise, you would find a subset $S \subseteq Y$ and the set of adjacent vertices $S'\subseteq Y$ with $|S|>|S'|$. But if this holds, we can replace $S'$ by $S$ in $X$ and still have an independent subset. This subset would have more vertices than $\alpha (G)$ and therefor is a contradiction. Hence we can find a matching of size $|Y|$.
+\end{solution}
+
+
+
+
+\section{More Matching ({\bf max 50})}
+
+
+\begin{problem}
+ \item (6 points) Let $G$ be a simple graph with an even number of vertices such that $d(v) \ge \frac{|V(G)|}{2}$ for every  vertex $v \in V(G)$. Show that $G$ has a perfect matching. 
+\end{problem}
+
+\begin{problem}
+ \item (9 points) Let $t$ be a tree on $n$ vertices with $l$ leaves. Show that $t$ has a matching
+ of size at least $\left\lceil \frac{n-l}{2} \right\rceil$.
+\end{problem}
+
+\begin{problem}
+\item (10 points) For every $k \ge 1$, show that every simple $k$-regular graph has a matching of size at least
+$\frac{n}{4 - \frac{2}{k}}$.\\ {\small Hint: show that this bound holds for every maximal matching.}
+\end{problem}
+
+
+
+
+\begin{problem}
+ \item (10 points) Show that a tree has either one perfect matching or none. For a graph $G$, denote by 
+ $o(G)$ the number of components of $G$ of odd cardinality. Prove that, for a tree $T$, $T$ has a perfect 
+ matching, if and only if, $o(T - v) = 1$ for all vertices $v$.
+\end{problem}
+
+
+\begin{problem}
+ \item (15 points) Prove that every simple bridgeless cubic graph ($3$-regular graph) has a perfect matching. 
+  Furthermore, show that there is a cubic graph that has a bridge and does not have a perfect matching. \\
+  {\small Hint: Use Tutte's theorem.}
+\end{problem}
+
+
+
+
+\begin{problem}
+ \item (13 points) Let $G$ be a graph and  $M$ be a maximal matching in $G$.
+ \begin{subprob}
+  \item Show that if there is no $M$-augmenting path of length three then $|M| \ge \frac{2}{3}\cdot  opt$, where $opt$ is the size of a maximum matching.
+ \item Suppose now that for a given $k>1$, there is no $M$-augmenting path of length $2k + 1$ or shorter. Prove a  better bound on $|M|$ than the one above, and show that your  bound is tight by providing
+ an example.
+ \end{subprob}
+\end{problem}
+
+
+
+
+
+\end{document}
+
