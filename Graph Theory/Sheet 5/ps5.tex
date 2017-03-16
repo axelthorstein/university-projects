@@ -39,6 +39,8 @@
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\RR}{\mathbb{R}}
+\newcommand\floor[1]{\lfloor#1\rfloor}
+\newcommand\ceil[1]{\lceil#1\rceil}
 
 
 
@@ -49,7 +51,7 @@
 \thispagestyle{empty}
 
 {\small{\sc\noindent
-        Sebastian Plenz ({\tt sebastianp16@ru.is}) and Tigran Tonoyan ({\tt tigran@ru.is})
+        Sebastian Plenz ({\tt sebastianp16@ru.is}) and Axel Steingrimsson ({\tt axels16@ru.is})
 }}
 
 \rubrik{PROBLEM SET 5 (T-445-GRTH)}
@@ -81,7 +83,11 @@ You need to collect $\bf 60$ points to get a full score {\bf but} you cannot get
 \item For every planar graph $G$, $\alpha(G)\ge \frac{|V(G)|}{4}$.
 \end{subprob}
 \end{problem}
-\begin{solution}
+\begin{solution}\\
+	a) For a simple graph $G$, if for each vertex $v_i$ in $G$, you remove $v_i$ and its adjacent neighbours, and continue removing each vertex in this fashion until there are no vertices left, then $\{v_1, v_2, ..., v_i\}$ is an independent set. 
+	Because each vertex can have at most $D(G)$ neighbours, we can remove at most $D(G) + 1$ vertices. 
+	Therefore there can be at most $\frac{V(G)}{D(G)+1}$ removals, and therefore the independent set must have at least this many vertices. \\
+	Therefore for every simple graph $G$, $\alpha(G)\ge \frac{|V(G)|}{D(G)+1}$.\\
 	b) From the lecture we know $ \alpha (G) \geq \frac{|V(G)|}{\chi (G)}$. The 4-color-theorem says every planar graph has chromatic number $\leq 4$. In total
 	$$ \alpha (G) \geq \frac{|V(G)|}{\chi (G)} \geq \frac{|V(G)|}{4} $$.
 \end{solution}
@@ -98,8 +104,18 @@ You need to collect $\bf 60$ points to get a full score {\bf but} you cannot get
 \end{solution}
 
 \begin{problem}
- \item (10 points) Show that every simple triangle-free graph has an independent set of size $\sqrt{n}$.
+ \item (10 points) Show that every simple triangle-free graph has an independent set of size of at least $\floor{\sqrt{n}}$.
 \end{problem}
+\begin{solution}
+	For a simple triangle-free graph $G$ we know that if there exists a vertex $u$ with a degree of greater than $\floor{\sqrt{n}}$, 
+	then there exists an independent set with each neighbour adjacent to $u$, 
+	because the neighbours cannot be adjacent to each other because if they were it would create a triangle. 
+	Otherwise all vertices would have a degree of less than $\floor{\sqrt{n}}$,
+	The we know that if there exists a vertex $v$ with a degree of less than $\floor{\sqrt{n}}$, 
+	then there must exist a maximal independent set greater than $\floor{\sqrt{n}}$. \\
+	Therefore based on the upper and lower bounds being greater than $\floor{\sqrt{n}}$, 
+	every simple triangle-free graph has an independent set of size of at least $\floor{\sqrt{n}}$.
+\end{solution}
 
 
 
@@ -129,6 +145,15 @@ You need to collect $\bf 60$ points to get a full score {\bf but} you cannot get
  Prove that there is a vertex $x \in X$, such that for every incident edge $\{x,y\}$, there is a perfect matching
   that contains $\{x,y\}$.
 \end{problem}
+\begin{solution}
+	Let $G=(X\cup Y, E)$ be a simple bipartite graph containing a perfect matching.
+	A matching is only perfect if it has $\floor{\frac{n}{2}}$ edges, which means G has an even amount of vertices
+	and that $|X| = |Y|$ so the perfect match $M$ in $G$ must have $\frac{n}{2}$ edges. 
+	Then if $M$ is perfect and $G$ is not disconnected we know that for each match in $M$ there must
+	be an edge not in $M$ that connects each match. This implies that there exists an alternating path $P$ in $G$, 
+	which means for each edge in $M$ that connects $u, v$, there is are two corresponding edges in $P / M$ 
+	that connect both it's vertices. Therefore the edges in $P / M$ provide a perfect match not equal to $M$. 
+\end{solution}
 
 
 
