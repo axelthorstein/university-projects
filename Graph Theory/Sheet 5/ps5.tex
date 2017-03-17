@@ -173,6 +173,15 @@ You need to collect $\bf 60$ points to get a full score {\bf but} you cannot get
 \begin{problem}
  \item (6 points) Let $G$ be a simple graph with an even number of vertices such that $d(v) \ge \frac{|V(G)|}{2}$ for every  vertex $v \in V(G)$. Show that $G$ has a perfect matching. 
 \end{problem}
+\begin{solution}
+	If $G$ is a simple graph with an even number of vertices, 
+	then arbitrarily splitting $G$ into two sets $G = S1 \cup S2$ such that $|S1| = |S2|$.
+	Then we know from the definition that each vertex $v \in V(G)$, $d(v) \ge \frac{|V(G)|}{2}$,
+	so we know that each set contains $ \frac{|V(G)|}{2}$ and each vertex must have a degree of at least $ \frac{|V(G)|}{2}$.
+	Therefore a vertex can be connected to at most $ \frac{|V(G)|}{2} - 1$ vertices in it's own set, and
+	therefore every vertex must be connected to a vertex in the opposite set. 
+	Therefore every pair of vertices have at least one edge connecting them, implying that a perfect match must exist between $S1$ and $S2$ and therefore in $G$ as well. 
+\end{solution}
 
 \begin{problem}
  \item (9 points) Let $t$ be a tree on $n$ vertices with $l$ leaves. Show that $t$ has a matching

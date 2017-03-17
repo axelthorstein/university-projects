@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  16 MAR 2017 13:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  16 MAR 2017 15:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -253,11 +253,14 @@ LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
  2887 strings out of 493014
  36826 string characters out of 6133351
- 101361 words of memory out of 5000000
+ 101355 words of memory out of 5000000
  6236 multiletter control sequences out of 15000+600000
  12691 words of font info for 49 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
@@ -277,7 +280,7 @@ ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texli
 ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texliv
 e/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/te
 xlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on ps5.pdf (3 pages, 161602 bytes).
+Output written on ps5.pdf (3 pages, 162484 bytes).
 PDF statistics:
  74 PDF objects out of 1000 (max. 8388607)
  53 compressed objects within 1 object stream
