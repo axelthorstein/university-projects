@@ -121,23 +121,33 @@ You need to collect $\bf 60$ points to get a full score {\bf but} you cannot get
 
 \section{Bipartite Matching ({\bf max 26})}
 
-
 \begin{problem}
  \item (5 points) Let $G=(X\cup Y, E)$ be a simple bipartite graph. Suppose that there is 
  a $k \in \NN$ such that $d(x) \ge k \ge d(y)$ for all $x \in X, y \in Y$. Show that $G$ 
  has a matching saturating $X$ (covering all of $X$).
 \end{problem}
+\begin{solution}
+	We start with an arbitrary $x_1 \in X$ and match it to an adjacent $y_i \in Y$, that is not matched to an other $x_j$ by now. We continue like this with the next x if possible. If there is no free adjacent vertex, we reorder the matchings from before, so this vertex gets a new free adjacent vertex. This is possible, because if the other vertices would all be connected just to this adjacent vertices, it would hold $d(y)> d(x)$ for those x and y. This is a contradiction and so,the assumption holds.  
+\end{solution}
+
 
 \begin{problem}
  \item (6 points) Let $G=(X\cup Y, E)$ be a simple bipartite graph. Let $A$ be the set of vertices in $G$ of
  maximum degree. Show that $G$ has a matching saturating $A \cap X$.
 \end{problem}
+\begin{solution}
+	In a more general way but with the same explanation as in problem 5, we can state that if a bipartite has no matching saturating $A \subset X$, there exists a subset $S\subset A$, such that the number of neighbors of S are less than $|S|$. We use this claim in the following proofs. \\
+	Take the set of vertices $A \cap X=:S$. Assume that there exists a subset $S'\subset S$ that has less neighbors than $|S'|$. In total (with double counting) the vertices of S' are connected to $\Delta(G) \cdot |S'|$ vertices. Thats the total degree of the adjacent vertices. If they are less than $|S'|$, the average degree is higher than $\Delta(G)$, wich is a contradiction. In total the assumption holds.
+\end{solution}
 
 
 \begin{problem}
  \item (6 points) Let $G=(X\cup Y, E)$ be a simple bipartite graph such that $d(x) \ge 1$ for all $x \in X$
  and $d(x) \ge d(y)$ for all $\{x,y\} \in E$ ($x \in X, y \in Y$). Show that $G$ has a matching saturating $X$.
 \end{problem}
+\begin{solution}
+	We use the same claim as in poblem 6. The proof is quite similar. Assume there exists a subset $S \subset X$, with less neighbors than $|S|$. Than there would be a $y \in Y$ with $d(y)>d(x)$ for an adjacent x with the same reason as in problem 6. This leads one more time to a contradiction and proves our claim.
+\end{solution}
 
 
 \begin{problem}
@@ -187,6 +197,13 @@ You need to collect $\bf 60$ points to get a full score {\bf but} you cannot get
  \item (9 points) Let $t$ be a tree on $n$ vertices with $l$ leaves. Show that $t$ has a matching
  of size at least $\left\lceil \frac{n-l}{2} \right\rceil$.
 \end{problem}
+\begin{solution}
+	We can show that any tree is a bipartite graph because at any level of the tree there are no nodes connected 
+	to other nodes at that level, so if we put all odd numbered levels in one set, and all even numbered levels in another set
+	so we have two sets of nodes where each node is only connected to a node in the other set. 
+	Therefore every tree is bipartite. 
+	From this claim
+\end{solution}
 
 \begin{problem}
 \item (10 points) For every $k \ge 1$, show that every simple $k$-regular graph has a matching of size at least
