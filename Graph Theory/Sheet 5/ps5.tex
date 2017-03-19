@@ -198,17 +198,15 @@ You need to collect $\bf 60$ points to get a full score {\bf but} you cannot get
  of size at least $\left\lceil \frac{n-l}{2} \right\rceil$.
 \end{problem}
 \begin{solution}
-	We can show that any tree is a bipartite graph because at any level of the tree there are no nodes connected 
-	to other nodes at that level, so if we put all odd numbered levels in one set, and all even numbered levels in another set
-	so we have two sets of nodes where each node is only connected to a node in the other set. 
-	Therefore every tree is bipartite. 
-	From this claim
+	For each inner node in a tree a match between two nodes causes an edge on the level one higher or lower to not be able to be used in a match. So arbitrarily matching between inner nodes will let at least half of the inner nodes to be used in a match, because for each branching at a node only one edge can be used, but if the node is an inner node and there is another edge connected to the node then there will exist another match down one level, and if that is an inner node then it will be connected to the level below allowing for another match. If it is a leaf node then there is no level below that can be used for a match, so it cannot be assumed. Therefore there will be at least a matching size equal to half of the inner nodes. 
 \end{solution}
 
 \begin{problem}
 \item (10 points) For every $k \ge 1$, show that every simple $k$-regular graph has a matching of size at least
 $\frac{n}{4 - \frac{2}{k}}$.\\ {\small Hint: show that this bound holds for every maximal matching.}
 \end{problem}
+\begin{solution}
+\end{solution}
 
 
 
@@ -218,6 +216,15 @@ $\frac{n}{4 - \frac{2}{k}}$.\\ {\small Hint: show that this bound holds for ever
  $o(G)$ the number of components of $G$ of odd cardinality. Prove that, for a tree $T$, $T$ has a perfect 
  matching, if and only if, $o(T - v) = 1$ for all vertices $v$.
 \end{problem}
+\begin{solution}
+	Let $T$ be a tree on at least 3 vertices, because on less than that 
+	there is obviously only one possible perfect matching. 
+	Then there must be some leaf $l$ that is connected to an inner node $v$.
+	Any perfect matching that exists must contain $\{l, v\}$ since $l$ cannot be connected to any other vertex as it is a leaf. 
+	Let $T'$ be the subtree of $T$ with $\{l, v\}$ and all incident edges removed. 
+	Every component of $T'$ is a tree, and so has one matching, which means that $T'$ has one matching. 
+	Any matching of $T$ has to have $\{l, v\}$, so therefore $T$ can have either one or none perfect matchings. 
+\end{solution}
 
 
 \begin{problem}
@@ -225,6 +232,16 @@ $\frac{n}{4 - \frac{2}{k}}$.\\ {\small Hint: show that this bound holds for ever
   Furthermore, show that there is a cubic graph that has a bridge and does not have a perfect matching. \\
   {\small Hint: Use Tutte's theorem.}
 \end{problem}
+\begin{solution}
+	Let $G$ be a simple bridgeless cubic graph, and $S \subset V(G)$, and let $C_1, ..., C_k$ be all the components of $G - S$.
+	Then let $o(G-S)$ be the number of components with an odd number of vertices, 
+	and let $m_i$ be the number of edges between the odd $C_i$ and $S$. 
+	Then $\sum\limits_{v=C_i} d(v) = 3|V(C_i)|$ because it is a 3-regular graph, and which is an odd number. 
+	And $\sum\limits_{v=C_i} d(v) = m_i + 2|E(C_i)|$, $2|E(C_i)|$ is an even number obviously so $m_i$ must be an odd number. 
+	And because $G$ is a bridgeless graph we know $m_i$ cannot be 1, and therefore is at least 3. 
+	\\Because of this we know that $o(G-S) = k \leq \frac{1}{3} \sum\limits_{i=1}^k m_i \leq
+	 \sum\limits_{v \in S} d(v) = |S|$. Therefore $o(G-S) = k \leq |S|$
+\end{solution}
 
 
 
@@ -237,6 +254,19 @@ $\frac{n}{4 - \frac{2}{k}}$.\\ {\small Hint: show that this bound holds for ever
  an example.
  \end{subprob}
 \end{problem}
+\begin{solution}
+	\\ a) In a graph $G$ with a maximal matching $M$, 
+	if there is no $M$-augmenting path of length three then for any path in $G$ every vertex in the path is in a match
+	except potentially the end vertices. Therefore any matching where this is true will be as close to a maximum matching,
+	except for potentially the end vertices, which at the worst case would be on a path graph with 2 edges and 3 vertices, 
+	where only one edge, and 2 vertices are in a maximal, non maximum matching, so 2/3 vertices, so it's $\frac{2}{3}\cdot  opt$ at worst. 
+	Therefore f there is no $M$-augmenting path of length three then $|M| \ge \frac{2}{3}\cdot  opt$\\
+	b) By the same logic from part a the worst case is allowing the smallest possible M-Augmenting path, which in this case is
+	$k = 2$, so no $2*2 + 1 = 5$ augmenting paths or less. So the worst case is $|M| = 6$, where there are 8 vertices and 7 edges.
+	This would lead to $\frac{6}{8} = \frac{3}{4}$ vertices involved in the match, so the bound is $\frac{3}{4}\cdot opt$.
+	
+
+\end{solution}
 
 
 
