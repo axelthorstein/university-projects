@@ -73,7 +73,7 @@ public class Elevator implements Runnable {
 	        		scene.removePerson(person);
 	            	int floor = person.getStopFloor();
 	            	if (wantedFloors.containsKey(floor)) {
-	            		wantedFloors.replace(floor, wantedFloors.get(floor) + 1);
+	            		wantedFloors.put(floor, wantedFloors.get(floor) + 1);
 	            	} else {
 	            		wantedFloors.put(floor, 1);
 	            	}
