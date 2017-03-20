@@ -1,5 +1,7 @@
 package com.ru.usty.scheduling;
 
+import java.util.ArrayList;
+
 import com.ru.usty.scheduling.process.ProcessExecution;
 
 public class Scheduler {
@@ -7,6 +9,8 @@ public class Scheduler {
 	ProcessExecution processExecution;
 	Policy policy;
 	int quantum;
+	ArrayList<Integer> processes;
+	int currentProcess;
 
 	/**
 	 * Add any objects and variables here (if needed)
@@ -31,6 +35,8 @@ public class Scheduler {
 
 		this.policy = policy;
 		this.quantum = quantum;
+		this.processes = new ArrayList<Integer>();
+		this.currentProcess = -1;
 
 		/**
 		 * Add general initialization code here (if needed)
@@ -90,7 +96,13 @@ public class Scheduler {
 		 * Add scheduling code here
 		 */
 		
-
+		if (processes.size() == 0) {
+			processes.add(processID);
+			processExecution.switchToProcess(processID);
+		} else {
+			processes.add(processID);
+		}
+		System.out.println("Added process: " + processID + ", processes: " + processes);
 	}
 
 	/**
@@ -101,7 +113,11 @@ public class Scheduler {
 		/**
 		 * Add scheduling code here
 		 */
-		processExecution.switchToProcess(processID);
-
+		processes.remove(0);
+		System.out.println("Removed process: " + processID + ", processes: " + processes);
+		if (processes.size() > 0) {
+			System.out.println("Adding new process: " + processes.get(0) + ", processes: " + processes);
+			processExecution.switchToProcess(processes.get(0));
+		}
 	}
 }
