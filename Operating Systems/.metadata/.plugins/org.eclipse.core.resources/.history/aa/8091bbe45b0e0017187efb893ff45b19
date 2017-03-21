@@ -1,0 +1,18 @@
+package com.ru.usty.scheduling;
+
+public class TimeSlice implements Runnable {
+
+	private long startTime;
+	
+	public void setStartTime() {
+        this.startTime = System.currentTimeMillis();
+	}
+    public void run() {
+    	if (startTime + 1000 > System.currentTimeMillis()) {
+			while (startTime + 1000 > System.currentTimeMillis()) {}
+			System.out.println("interupt");
+			rrSwitchProcess();
+    	}
+    }  
+
+}
