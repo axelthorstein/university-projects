@@ -404,14 +404,10 @@ public class Scheduler {
 					this.currentProcess -= 1;
 				}
 			}
-			removeProcess(processID);
+			ArrayList<Integer> processPriorityLevel = this.priorityLevels.get(getPriorityLevel(processID));
+			int processIndex = processPriorityLevel.indexOf(processID);
+			processPriorityLevel.remove(processIndex);
 		}
-	}
-	
-	public void removeProcess(int processID) {
-		ArrayList<Integer> processPriorityLevel = this.priorityLevels.get(getPriorityLevel(processID));
-		int processIndex = processPriorityLevel.indexOf(processID);
-		processPriorityLevel.remove(processIndex);
 	}
 	
 	public int getPriorityLevel(int processID) {

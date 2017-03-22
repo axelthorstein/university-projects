@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Semaphore;
 
 import com.ru.usty.scheduling.process.ProcessExecution;
 
@@ -16,6 +18,7 @@ public class Scheduler {
 	ArrayList<Integer> processes;
 	Thread timeSlice;
 	Thread monitor;
+	Semaphore lock;
 	int currentProcess;
 	Map<Integer, ArrayList<Integer>> priorityLevels;
 
@@ -73,6 +76,7 @@ public class Scheduler {
 			/**
 			 * Add your policy specific initialization code here (if needed)
 			 */
+			this.lock = new Semaphore(1);
 			break;
 		case HRRN:	//Highest response ratio next
 			System.out.println("Starting new scheduling task: Highest response ratio next");
@@ -387,56 +391,25 @@ public class Scheduler {
 	
 	public void feedback(boolean adding, int processID) {
 		if (adding) {
-			if (areAllQueuesEmpty()) {
+			if (processes.size() == 0) {
 				priorityLevels.get(1).add(processID);
 				this.currentProcess = 0;
-				processExecution.switchToProcess(priorityLevels.get(1).get(this.currentProcess));
+				processExecution.switchToProcess(processes.get(this.currentProcess));
 				createFeedbackTimeSlice();
 			} else {
 				priorityLevels.get(1).add(processID);
 			}
 		} else {
-			if (!areAllQueuesEmpty()) {
-				feedbackSwitchProcess();
+			if (processes.size() > 0) {
+				roundRobinSwitchProcess();
 			}
-			if (getPriorityLevel(processID) == getPriorityLevel(this.currentProcess)) {
-				if (processes.indexOf(processID) <= this.currentProcess) {
-					this.currentProcess -= 1;
-				}
+			if (processes.indexOf(processID) <= this.currentProcess) {
+				this.currentProcess -= 1;
 			}
-			removeProcess(processID);
+			processes.remove(processes.indexOf(processID));
+
 		}
 	}
-	
-	public void removeProcess(int processID) {
-		ArrayList<Integer> processPriorityLevel = this.priorityLevels.get(getPriorityLevel(processID));
-		int processIndex = processPriorityLevel.indexOf(processID);
-		processPriorityLevel.remove(processIndex);
-	}
-	
-	public int getPriorityLevel(int processID) {
-		int i = 1;
-		while (i < 8) {
-			if (this.priorityLevels.get(i).contains(processID)) {
-				return i;
-			}
-			i++;
-		}
-		return 0;
-	}
-	
-	public boolean areAllQueuesEmpty() {
-		int i = 1;
-		boolean empty = true;
-		while (empty  && i < 8) {
-			if (!this.priorityLevels.get(i).isEmpty()) {
-				empty = false;
-			}
-			i++;
-		}
-		return empty;
-	}
-	
 	public void createFeedbackTimeSlice() {
 			
 			if (this.timeSlice != null) {
@@ -460,20 +433,12 @@ public class Scheduler {
 		}
 	
 	private void feedbackSwitchProcess() {
-		int i = 1;
-		boolean switched = false;
-		while (!switched  && i < 8) {
-			ArrayList<Integer> priorityLevel = this.priorityLevels.get(i);
-			if (!priorityLevel.isEmpty()) {
-				if (this.currentProcess == priorityLevel.size() - 1) {
-					this.currentProcess = 0;
-					processExecution.switchToProcess(priorityLevel.get(this.currentProcess));
-				} else {
-					this.currentProcess = this.currentProcess + 1;
-					processExecution.switchToProcess(priorityLevel.get(this.currentProcess));
-				}
-			}
-			i++;
+		if (this.currentProcess == processes.size() - 1) {
+			this.currentProcess = 0;
+			processExecution.switchToProcess(processes.get(this.currentProcess));
+		} else {
+			this.currentProcess = this.currentProcess + 1;
+			processExecution.switchToProcess(processes.get(this.currentProcess));
 		}
 		createFeedbackTimeSlice();
 	}  

@@ -399,19 +399,13 @@ public class Scheduler {
 			if (!areAllQueuesEmpty()) {
 				feedbackSwitchProcess();
 			}
-			if (getPriorityLevel(processID) == getPriorityLevel(this.currentProcess)) {
-				if (processes.indexOf(processID) <= this.currentProcess) {
-					this.currentProcess -= 1;
-				}
+			if (getPriorityLevel(processID) == getPriorityLevel(this.currentProcess))
+			if (processes.indexOf(processID) <= this.currentProcess) {
+				this.currentProcess -= 1;
 			}
-			removeProcess(processID);
+			processes.remove(processes.indexOf(processID));
+
 		}
-	}
-	
-	public void removeProcess(int processID) {
-		ArrayList<Integer> processPriorityLevel = this.priorityLevels.get(getPriorityLevel(processID));
-		int processIndex = processPriorityLevel.indexOf(processID);
-		processPriorityLevel.remove(processIndex);
 	}
 	
 	public int getPriorityLevel(int processID) {
@@ -460,20 +454,12 @@ public class Scheduler {
 		}
 	
 	private void feedbackSwitchProcess() {
-		int i = 1;
-		boolean switched = false;
-		while (!switched  && i < 8) {
-			ArrayList<Integer> priorityLevel = this.priorityLevels.get(i);
-			if (!priorityLevel.isEmpty()) {
-				if (this.currentProcess == priorityLevel.size() - 1) {
-					this.currentProcess = 0;
-					processExecution.switchToProcess(priorityLevel.get(this.currentProcess));
-				} else {
-					this.currentProcess = this.currentProcess + 1;
-					processExecution.switchToProcess(priorityLevel.get(this.currentProcess));
-				}
-			}
-			i++;
+		if (this.currentProcess == processes.size() - 1) {
+			this.currentProcess = 0;
+			processExecution.switchToProcess(processes.get(this.currentProcess));
+		} else {
+			this.currentProcess = this.currentProcess + 1;
+			processExecution.switchToProcess(processes.get(this.currentProcess));
 		}
 		createFeedbackTimeSlice();
 	}  
