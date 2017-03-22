@@ -1,6 +1,10 @@
 package com.ru.usty.scheduling;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.concurrent.Semaphore;
+
 import com.ru.usty.scheduling.process.ProcessExecution;
 
 public class Scheduler {
@@ -11,6 +15,7 @@ public class Scheduler {
 	ArrayList<Integer> processes;
 	Thread timeSlice;
 	Thread monitor;
+	Semaphore lock;
 	int currentProcess;
 
 	/**
@@ -67,6 +72,7 @@ public class Scheduler {
 			/**
 			 * Add your policy specific initialization code here (if needed)
 			 */
+			this.lock = new Semaphore(1);
 			break;
 		case HRRN:	//Highest response ratio next
 			System.out.println("Starting new scheduling task: Highest response ratio next");
@@ -224,6 +230,7 @@ public class Scheduler {
 	
 	public void shortestProcessNext(boolean adding, int processID) {
 		if (adding) {
+			
 			if (processes.size() == 0) {
 				processes.add(processID);
 				processExecution.switchToProcess(processes.get(0));
@@ -287,6 +294,7 @@ public class Scheduler {
 	}
 	
 	public long calculateRemainingTime(int processID) {
+
 		return processExecution.getProcessInfo(processID).totalServiceTime 
 				- processExecution.getProcessInfo(processID).elapsedExecutionTime;
 	}
@@ -297,20 +305,18 @@ public class Scheduler {
 			
 		    public void run() {
 		    	while (this.isInterrupted() != true) {
-		    		if (processes.size() > 1) {
-		    			System.out.println(processes);
-		    			if (calculateRemainingTime(processes.get(0)) > calculateRemainingTime(processes.get(1))) {
-		    				int currentProcess = processes.get(0);
-		    				processes.remove(0);
-		    				insertByRemainingTime(currentProcess);
-		    				processExecution.switchToProcess(processes.get(0));
-		    			}
-		    		}
 		    		try {
-						sleep(10);
+						if (processes.size() > 1) {
+			    			if (calculateRemainingTime(processes.get(0)) > calculateRemainingTime(processes.get(1))) {
+			    				int currentProcess = processes.get(0);
+			    				processes.remove(0);
+			    				insertByRemainingTime(currentProcess);
+			    				processExecution.switchToProcess(processes.get(0));
+			    			}
+			    		}
+						sleep(100);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						break; // This is a hack! Find a better solution!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 					}
 		    	}
 		    }  
@@ -320,10 +326,55 @@ public class Scheduler {
 	
 	public void highestResponseRatioNext(boolean adding, int processID) {
 		if (adding) {
-			
+			if (processes.size() == 0) {
+				processes.add(processID);
+				processExecution.switchToProcess(processes.get(0));
+			} else {
+				insertByPriority(processID);
+			}
 		} else {
-
+			processes.remove(processes.get(0));
+			if (processes.size() > 1) {
+				resortByPriority();
+			}
+			if (processes.size() > 0) {
+				processExecution.switchToProcess(processes.get(0));
+			}
 		}
+	}
+	
+	private Comparator<Integer> priorityComparator = new Comparator<Integer>()
+    {
+        public int compare(Integer p1, Integer p2)
+        {
+            return (int) (calculatePriority(p1) - calculatePriority(p2));
+        }
+    };
+	
+	public void resortByPriority() {
+		Collections.sort(this.processes, priorityComparator);
+	}
+	
+	public void insertByPriority(int processID) {
+		int location = -1;
+		int i = 1;
+		while (i < processes.size() && location == -1) {
+			if (calculatePriority(processes.get(i)) > calculatePriority(processID)) {
+				location = i;
+			}
+			i++;
+		}
+		if (location != -1) {
+			processes.add(location, processID);
+		} else {
+			processes.add(processID);
+		}
+	}
+	
+	public float calculatePriority(int processID) {
+		
+		return 1 + (processExecution.getProcessInfo(processID).elapsedWaitingTime 
+				/ processExecution.getProcessInfo(processID).totalServiceTime);
 	}
 	
 	public void feedback(boolean adding, int processID) {
