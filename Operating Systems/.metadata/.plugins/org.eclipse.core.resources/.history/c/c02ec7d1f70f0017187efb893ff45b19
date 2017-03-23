@@ -200,16 +200,15 @@ public class Scheduler {
 	}
 	
 	public void roundRobinSwitchProcess() {
-		if (processes.size() != 0) {
-			if (this.currentProcessIndex == processes.size() - 1) {
-				this.currentProcessIndex = 0;
-				processExecution.switchToProcess(processes.get(this.currentProcessIndex));
-			} else {
-				this.currentProcessIndex = this.currentProcessIndex + 1;
-				processExecution.switchToProcess(processes.get(this.currentProcessIndex));
-			}
-			createTimeSlice();
+
+		if (this.currentProcessIndex == processes.size() - 1) {
+			this.currentProcessIndex = 0;
+			processExecution.switchToProcess(processes.get(this.currentProcessIndex));
+		} else {
+			this.currentProcessIndex = this.currentProcessIndex + 1;
+			processExecution.switchToProcess(processes.get(this.currentProcessIndex));
 		}
+		createTimeSlice();
 	}
 	
 	public long getQuantum() {
