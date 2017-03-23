@@ -21,6 +21,8 @@ public class Scheduler {
 	int currentProcessLevel;
 	Map<Integer, ArrayList<Integer>> priorityLevels;
 	Semaphore lock;
+	ArrayList<Long> totalProcesses;
+	private long startTime;
 
 	/**
 	 * Add any objects and variables here (if needed)
@@ -46,6 +48,8 @@ public class Scheduler {
 		this.policy = policy;
 		this.quantum = quantum;
 		this.processes = new ArrayList<Integer>();
+		this.totalProcesses = new ArrayList<Long>();
+		
 
 		/**
 		 * Add general initialization code here (if needed)
@@ -57,7 +61,7 @@ public class Scheduler {
 			/**
 			 * Add your policy specific initialization code here (if needed)
 			 */
-			
+			this.startTime = System.currentTimeMillis();
 			break;
 		case RR:	//Round robin
 			System.out.println("Starting new scheduling task: Round robin, quantum = " + quantum);
@@ -108,6 +112,7 @@ public class Scheduler {
 	 * DO NOT CHANGE DEFINITION OF OPERATION
 	 */
 	public void processAdded(int processID) {
+		this.totalProcesses.add(processExecution.getProcessInfo(processID).totalServiceTime);
 		switch(policy) {
 		case FCFS:	//First-come-first-served
 			firstComeFirstServe(true, processID);
@@ -160,6 +165,19 @@ public class Scheduler {
 		}
 	}
 	
+	public int calculateAverageResponseTime() {
+		return 0;
+	}
+	
+	public int calculateAverageTurnAround() {
+		int turnaroundTime = 0;
+		long endTime = System.currentTimeMillis();
+		for (Long serviceTime: this.totalProcesses) {
+			turnaroundTime += endTime - (this.startTime + serviceTime);
+		}
+		return turnaroundTime/this.totalProcesses.size();
+	}
+	
 	public void firstComeFirstServe(boolean adding, int processID) {
 		if (adding) {
 			if (processes.size() == 0) {
@@ -173,6 +191,7 @@ public class Scheduler {
 			if (processes.size() > 0) {
 				processExecution.switchToProcess(processes.get(0));
 			}
+			System.out.println(calculateAverageTurnAround());
 		}
 	}
 	

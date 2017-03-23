@@ -108,6 +108,7 @@ public class Scheduler {
 	 * DO NOT CHANGE DEFINITION OF OPERATION
 	 */
 	public void processAdded(int processID) {
+		this.totalProcesses.add(processExecution.getProcessInfo(processID).totalServiceTime);
 		switch(policy) {
 		case FCFS:	//First-come-first-served
 			firstComeFirstServe(true, processID);
@@ -158,6 +159,19 @@ public class Scheduler {
 			feedback(false, processID);
 			break;
 		}
+	}
+	
+	public int calculateAverageResponseTime() {
+		return 0;
+	}
+	
+	public int calculateAverageTurnAround() {
+		int turnaroundTime = 0;
+		long endTime = System.currentTimeMillis();
+		for (Long serviceTime: this.totalProcesses) {
+			turnaroundTime += endTime - (this.startTime + serviceTime);
+		}
+		return turnaroundTime/this.totalProcesses.size();
 	}
 	
 	public void firstComeFirstServe(boolean adding, int processID) {

@@ -160,6 +160,19 @@ public class Scheduler {
 		}
 	}
 	
+	public int calculateAverageResponseTime() {
+		return 0;
+	}
+	
+	public int calculateAverageTurnAround() {
+		int turnaroundTime = 0;
+		long endTime = System.currentTimeMillis();
+		for (Long serviceTime: this.totalProcesses) {
+			turnaroundTime += endTime - (this.startTime + serviceTime);
+		}
+		return turnaroundTime/this.totalProcesses.size();
+	}
+	
 	public void firstComeFirstServe(boolean adding, int processID) {
 		if (adding) {
 			if (processes.size() == 0) {

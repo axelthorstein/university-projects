@@ -46,6 +46,7 @@ public class Scheduler {
 		this.policy = policy;
 		this.quantum = quantum;
 		this.processes = new ArrayList<Integer>();
+		
 
 		/**
 		 * Add general initialization code here (if needed)
@@ -57,7 +58,6 @@ public class Scheduler {
 			/**
 			 * Add your policy specific initialization code here (if needed)
 			 */
-			
 			break;
 		case RR:	//Round robin
 			System.out.println("Starting new scheduling task: Round robin, quantum = " + quantum);
@@ -108,6 +108,7 @@ public class Scheduler {
 	 * DO NOT CHANGE DEFINITION OF OPERATION
 	 */
 	public void processAdded(int processID) {
+
 		switch(policy) {
 		case FCFS:	//First-come-first-served
 			firstComeFirstServe(true, processID);
