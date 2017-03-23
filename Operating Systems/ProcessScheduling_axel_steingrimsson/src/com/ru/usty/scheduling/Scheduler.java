@@ -388,28 +388,24 @@ public class Scheduler {
 	}
 	
 	public void feedback(boolean adding, int processID) {
-		if (adding) {
-			if (areAllQueuesEmpty()) {
-
-				this.currentProcessLevel = 1;
-				priorityLevels.get(this.currentProcessLevel).add(processID);
-				processExecution.switchToProcess(priorityLevels.get(this.currentProcessLevel).get(this.currentProcessIndex));
-				createFeedbackTimeSlice();
-			} else {
-				priorityLevels.get(1).add(processID);
-			}
-		} else {
-			if (!areAllQueuesEmpty()) {
-				try {
-					this.lock.acquire();
-					feedbackSwitchProcess();
-					this.lock.release();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+		try {
+			lock.acquire();
+			if (adding) {
+				if (priorityLevelsSize() == 0) {
+					this.currentProcessLevel = 1;
+					priorityLevels.get(this.currentProcessLevel).add(processID);
+					processExecution.switchToProcess(priorityLevels.get(this.currentProcessLevel).get(this.currentProcessIndex));
+					createFeedbackTimeSlice();
+				} else {
+					priorityLevels.get(1).add(processID);
 				}
-				
-			}
-			removeProcess(processID);
+			} else {
+					feedbackSwitchProcess();
+					removeProcess(processID);
+				}
+		lock.release();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -430,75 +426,72 @@ public class Scheduler {
 		return 0;
 	}
 	
-	public boolean areAllQueuesEmpty() {
+	public int priorityLevelsSize() {
 		int i = 1;
-		boolean empty = true;
-		while (empty  && i < 8) {
-			if (!this.priorityLevels.get(i).isEmpty()) {
-				empty = false;
-			}
+		int size = 0;
+		while (i < 8) {
+			size += this.priorityLevels.get(i).size();
 			i++;
 		}
-		return empty;
+		return size;
 	}
 	
 	public void createFeedbackTimeSlice() {
 			
-			if (this.timeSlice != null) {
-				this.timeSlice.interrupt();
-			}
-			
-			this.timeSlice = new Thread() {
-				
-			    public void run() {
-			    	long startTime = System.currentTimeMillis();
-			    	if (startTime + getQuantum() > System.currentTimeMillis()) {
-						while ((startTime + getQuantum() > System.currentTimeMillis())) {}
-						if (this.isInterrupted() != true) {
-							try {
-								lock.acquire();
-								feedbackSwitchProcess();
-								lock.release();
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
-			    	}
-			    }
-			};
-			this.timeSlice.start();
+		if (this.timeSlice != null) {
+			this.timeSlice.interrupt();
 		}
+		
+		this.timeSlice = new Thread() {
+			
+		    public void run() {
+		    	long startTime = System.currentTimeMillis();
+		    	if (startTime + getQuantum() > System.currentTimeMillis()) {
+					while ((startTime + getQuantum() > System.currentTimeMillis())) {}
+					if (this.isInterrupted() != true) {
+						try {
+							lock.acquire();
+							feedbackSwitchProcess();
+							lock.release();
+						} catch (InterruptedException e) {
+							// This will occasionally throw the InterruptedException because it may be restarted while waiting,
+							// However this doesn't affect performance so I let it through. 
+						}
+					}
+		    	}
+		    }
+		};
+		this.timeSlice.start();
+	}
 	
 	private void feedbackSwitchProcess() {
+
 		moveDown();
-		int i = 1;
-		boolean switched = false;
-		
-		while (!switched  && i < 8) {
-			ArrayList<Integer> priorityLevel = this.priorityLevels.get(i);
+		if (priorityLevelsSize() > 1) {
+			int i = 1;
+			boolean switched = false;
 			
-			if (!priorityLevel.isEmpty()) {
-				this.currentProcessLevel = i;
-				processExecution.switchToProcess(priorityLevel.get(this.currentProcessIndex));
-				switched = true;
+			while (!switched  && i < 8) {
+				ArrayList<Integer> priorityLevel = this.priorityLevels.get(i);
+				
+				if (!priorityLevel.isEmpty()) {
+					this.currentProcessLevel = i;
+					processExecution.switchToProcess(priorityLevel.get(this.currentProcessIndex));
+					switched = true;
+				}
+				i++;
 			}
-			i++;
+			createFeedbackTimeSlice();
 		}
-		createFeedbackTimeSlice();
 	}  
 	
 	public void moveDown() {
+		int processID = this.priorityLevels.get(this.currentProcessLevel).get(this.currentProcessIndex);
+		this.priorityLevels.get(this.currentProcessLevel).remove(this.currentProcessIndex);
 		if (this.currentProcessLevel != 7) {
-			int processID = this.priorityLevels.get(this.currentProcessLevel).get(this.currentProcessIndex);
-			this.priorityLevels.get(this.currentProcessLevel).remove(this.currentProcessIndex);
-			this.priorityLevels.get(this.currentProcessLevel + 1).add(processID);
-		} else {
-			if (this.priorityLevels.get(7).size() != 0) {
-				int processID = this.priorityLevels.get(this.currentProcessLevel).get(this.currentProcessIndex);
-				this.priorityLevels.get(this.currentProcessLevel).remove(this.currentProcessIndex);
-				this.priorityLevels.get(this.currentProcessLevel).add(processID);
-			}
+			this.currentProcessLevel += 1;
 		}
+		this.priorityLevels.get(this.currentProcessLevel).add(processID);
 	}
 }
 
