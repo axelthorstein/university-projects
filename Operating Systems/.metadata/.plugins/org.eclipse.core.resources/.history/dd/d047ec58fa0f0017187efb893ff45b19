@@ -195,6 +195,7 @@ public class Scheduler {
 				this.currentProcessIndex -= 1;
 			}
 			processes.remove(processes.indexOf(processID));
+
 		}
 	}
 	
@@ -220,6 +221,7 @@ public class Scheduler {
 		if (this.timeSlice != null) {
 			this.timeSlice.interrupt();
 		}
+		
 
 		this.timeSlice = new Thread() {
 			

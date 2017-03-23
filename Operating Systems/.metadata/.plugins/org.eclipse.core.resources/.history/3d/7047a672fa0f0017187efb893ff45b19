@@ -220,6 +220,7 @@ public class Scheduler {
 		if (this.timeSlice != null) {
 			this.timeSlice.interrupt();
 		}
+		
 
 		this.timeSlice = new Thread() {
 			
