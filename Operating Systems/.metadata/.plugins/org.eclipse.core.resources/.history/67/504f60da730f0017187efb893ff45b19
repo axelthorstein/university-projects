@@ -405,6 +405,7 @@ public class Scheduler {
 					feedbackSwitchProcess();
 					this.lock.release();
 				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -456,10 +457,11 @@ public class Scheduler {
 						while ((startTime + getQuantum() > System.currentTimeMillis())) {}
 						if (this.isInterrupted() != true) {
 							try {
-								lock.acquire();
+								this.lock.acquire();
 								feedbackSwitchProcess();
-								lock.release();
+								this.lock.release();
 							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 						}
@@ -488,6 +490,7 @@ public class Scheduler {
 	}  
 	
 	public void moveDown() {
+		System.out.println(this.currentProcessLevel + " " + this.priorityLevels);
 		if (this.currentProcessLevel != 7) {
 			int processID = this.priorityLevels.get(this.currentProcessLevel).get(this.currentProcessIndex);
 			this.priorityLevels.get(this.currentProcessLevel).remove(this.currentProcessIndex);

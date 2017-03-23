@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.Semaphore;
 
 import com.ru.usty.scheduling.process.ProcessExecution;
 
@@ -20,7 +19,6 @@ public class Scheduler {
 	int currentProcessIndex;
 	int currentProcessLevel;
 	Map<Integer, ArrayList<Integer>> priorityLevels;
-	Semaphore lock;
 
 	/**
 	 * Add any objects and variables here (if needed)
@@ -90,7 +88,6 @@ public class Scheduler {
 			 */
 			this.priorityLevels = new HashMap<Integer, ArrayList<Integer>>();
 			this.currentProcessIndex = 0;
-			this.lock = new Semaphore(1);
 			for (int i = 1; i < 8; i++) {
 				ArrayList<Integer> emptyList = new ArrayList<Integer>();
 				this.priorityLevels.put(i, emptyList);
@@ -400,14 +397,7 @@ public class Scheduler {
 			}
 		} else {
 			if (!areAllQueuesEmpty()) {
-				try {
-					this.lock.acquire();
-					feedbackSwitchProcess();
-					this.lock.release();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				
+				feedbackSwitchProcess();
 			}
 			removeProcess(processID);
 		}
@@ -455,13 +445,7 @@ public class Scheduler {
 			    	if (startTime + getQuantum() > System.currentTimeMillis()) {
 						while ((startTime + getQuantum() > System.currentTimeMillis())) {}
 						if (this.isInterrupted() != true) {
-							try {
-								lock.acquire();
-								feedbackSwitchProcess();
-								lock.release();
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
+							feedbackSwitchProcess();
 						}
 			    	}
 			    }
@@ -470,6 +454,9 @@ public class Scheduler {
 		}
 	
 	private void feedbackSwitchProcess() {
+//		System.out.println("The current process index " + this.currentProcessIndex + " on level " + this.currentProcessLevel + 
+//				" is going to be moved to level " + (this.currentProcessLevel + 1) + " and the new current process is going to be ");
+//		System.out.println(this.priorityLevels);
 		moveDown();
 		int i = 1;
 		boolean switched = false;
@@ -478,6 +465,7 @@ public class Scheduler {
 			ArrayList<Integer> priorityLevel = this.priorityLevels.get(i);
 			
 			if (!priorityLevel.isEmpty()) {
+				//this.currentProcessIndex = 0;
 				this.currentProcessLevel = i;
 				processExecution.switchToProcess(priorityLevel.get(this.currentProcessIndex));
 				switched = true;

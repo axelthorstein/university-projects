@@ -405,6 +405,7 @@ public class Scheduler {
 					feedbackSwitchProcess();
 					this.lock.release();
 				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -460,7 +461,8 @@ public class Scheduler {
 								feedbackSwitchProcess();
 								lock.release();
 							} catch (InterruptedException e) {
-								e.printStackTrace();
+								// TODO Auto-generated catch block
+								//e.printStackTrace();
 							}
 						}
 			    	}
