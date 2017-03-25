@@ -1,0 +1,190 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[top=3cm, bottom=3cm]{geometry}
+\usepackage{graphicx} 
+\usepackage{float}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{adjustbox}
+
+\newcommand{\Problem}[1]{%
+	\textbf{Problem #1.}%
+}
+
+\newcommand{\Review}[1]{%
+	\textbf{Review Question #1.}%
+}
+
+\newcommand\Solution{%
+	\noindent \textbf{Solution:}\\%
+}
+
+% Variables
+\newcommand{\assignmentname}{Heimadæmi 4}
+\newcommand{\coursename}{T-444-USTY, Grunnatriði stýrikerfa}
+\newcommand{\department}{Computer Science}
+\newcommand{\institution}{Reykjavik University}
+
+\begin{document}
+
+\title{\assignmentname \\ { \normalsize {\textsc \coursename}}}
+\author{
+     Axel Steingrimsson \\ % Your name here
+      \department \\
+      \institution \\
+}
+
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+
+\subsection*{Chapter 9}
+
+\Review{9.2} What is the main function of a dispatcher? Give some examples of events when it is invoked.
+
+\Solution It is the module that gives control of the CPU to the process selected by the short-time scheduler, which involves switching context, and to user mode.
+~\\
+\Problem{9.1} Given the following jobs that are to be processed on a single processor:
+	\begin{table}[H]
+	\centering
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\multicolumn{1}{|l|}{\textbf{Process}} & \textbf{Burst Time in ms} & \multicolumn{1}{l|}{\textbf{Arrival Time in ms}} \\ \hline
+			P1	& 4	& 0	\\ \hline
+			P2	& 12	& 2	\\ \hline
+			P3	& 8	& 6	\\ \hline
+			P4	& 6	& 16	\\ \hline
+			P5	& 10	& 20	\\ \hline
+		\end{tabular}
+	\end{table}
+	
+	\begin{enumerate}[label=\textbf{\alph*}.]
+		\item Show the schedule using the scheduling algorithms shortest process next, a non-preemptive algorithm, and shortest remaining time, a preemptive algorithm. \\ Use a GANTT chart to show the schedules in a manner similar to the FCFS schedule shown below: (1 unit = 2 ms)
+			\begin{table}[H]
+				\centering
+				\begin{adjustbox}{width=1\textwidth}
+					\begin{tabular}{lcllllllllllllllllll}
+					\hline
+					\multicolumn{1}{|l|}{\textbf{P1}} & \multicolumn{1}{c|}{\textbf{P1}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P4}} & \multicolumn{1}{l|}{\textbf{P4}} & \multicolumn{1}{l|}{\textbf{P4}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} \\ \hline
+					\multicolumn{1}{c}{0}	& \multicolumn{2}{c}{4}	&	&	&	&	& \multicolumn{2}{c}{16}	&	&	& \multicolumn{2}{c}{24}	&	&	\multicolumn{2}{c}{30}	&	&	&	& 40                              
+					\end{tabular}
+				\end{adjustbox}
+			\end{table}
+			\begin{table}[H]
+				\centering
+				\begin{adjustbox}{width=1\textwidth}
+					\begin{tabular}{lcllllllllllllllllll}
+					\hline
+					\multicolumn{1}{|l|}{\textbf{P1}} & \multicolumn{1}{c|}{\textbf{P1}} & \multicolumn{1}{l|}{\textbf{P4}} & \multicolumn{1}{l|}{\textbf{P4}} & \multicolumn{1}{l|}{\textbf{P4}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} \\ \hline
+					\multicolumn{1}{c}{0}	& \multicolumn{2}{c}{4}	&	& \multicolumn{2}{c}{10}	&	&	& \multicolumn{2}{c}{18}	& 	&	& 	& \multicolumn{2}{c}{28}	&	&	&	&	& 40                              
+					\end{tabular}
+				\end{adjustbox}
+			\end{table}
+			\begin{table}[H]
+				\centering
+				\begin{adjustbox}{width=1\textwidth}
+					\begin{tabular}{lcllllllllllllllllll}
+					\hline
+					\multicolumn{1}{|l|}{\textbf{P1}} & \multicolumn{1}{c|}{\textbf{P1}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} \\ \hline
+					\multicolumn{1}{c}{0}	& \multicolumn{2}{c}{4}&\multicolumn{1}{c}{6}	& 	&	&  \multicolumn{2}{c}{14}	&\multicolumn{0}{c}{16}	& 	&	& 	& \multicolumn{2}{c}{28}	&	&	&	&	& 40                              
+					\end{tabular}
+				\end{adjustbox}
+			\end{table}
+
+		\item Compute the turnaround time and relative delay for each algorithm
+	\end{enumerate}
+	
+
+
+	
+\Solution SPN: $0 + 26 + 4 - 6 + 2 = 22/4 = 5.5$
+
+
+~\\
+\Problem{9.2} What factors determine the time quantum in round robin scheduling? Consider the system:
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\multicolumn{1}{|l|}{\textbf{Process}} & \textbf{Arrival Time in ms} & \multicolumn{1}{l|}{\textbf{Processing Time in ms}} \\ \hline
+			P1	& 0	& 12 	\\
+			P2	& 2	& 6 	\\
+			P3	& 8	& 18	\\
+			P4	& 10	& 4	\\
+			\hline
+		\end{tabular}
+	\end{table}
+	Context switch takes a time of 1 unit. Compute the average turnaround time of the processes for the time quanta $q = 2$, $q = 4$ and $q = 8$ respectively.
+	
+\Solution Solution for p9.2. goes here
+
+~\\
+\subsection*{Chapter 10}
+
+\Review{10.1} List and briefly define five different categories of synchronization granularity.
+
+\Solution Solution for r10.1. goes here
+
+~\\
+\Review{10.2} What grain size of parallelism is appropriate for a multiprogrammed uniprocessor?
+
+\Solution Solution for r10.2. goes here
+
+~\\
+\Review{10.3} For which kinds of applications is gang scheduling of threads most useful?
+
+\Solution Solution for r10.3. goes here
+
+~\\
+\subsection*{Chapter 11}
+
+\Review{11.4} Why would you expect improved performance using a double buffer rather than a single buffer for I/O?
+
+\Solution Solution for r11.4. goes here
+
+~\\
+\Problem{11.3} Consider a disk drive with 4000 cylinders, numbered from 0 to 3999. The request queue has the following composition:
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{llcllllllllllllllll}
+			1045 &  & 750 &  & 932 &  & 878 &  & 1365 &  & 1787 &  & 1245 &  & 664 &  & 1678 &  & 1897
+		\end{tabular}
+	\end{table}
+	If the current positions is 1167 and the previous request was served at 1250, compute the total distance (in cylinders) that the disk arm would move for each of the following algorithms:
+	\begin{enumerate}[label=\alph*:]
+		\item FIFO
+		\item SSTF
+		\item SCAN
+		\item C-SCAN
+	\end{enumerate}
+
+\Solution Solution for p11.3. goes here
+
+~\\
+\subsection*{Chapter 12}
+
+\Problem{12.1} A file contains 20000 records, each of a fixed size of 140 bytes. The file is to be stored in a disk drive having blocks of 3096 bytes with 512 bytes of inter-block gaps. If unspanned blocking is used, compute the following:
+	\begin{enumerate}[label=\textbf{\alph*}.]
+		\item Blocking factor (i.e., the average number of blocks per record).
+		\item Number of blocks needed to store the 30000 records.
+		\item Total size of the file.
+	\end{enumerate}
+	
+\Solution Solution for p12.1. goes here
+
+~\\
+\Problem{12.4} For the B-tree in Figure 12.4c, show the result of inserting the key 97.
+	\begin{figure}[H]
+
+	\end{figure}
+	
+\Solution Solution for p12.4. goes here
+
+~\\
+\Problem{12.7} A sequential file is stored in a disk occupying 100 contiguous disk blocks. The disk has an average rotational delay of 2.5 ms. The time taken to seek the head of the drive to the required cylinder is 25 ms and the time taken to read a block is 0.25 ms. Find the minimum, maximum, and average time to search for a record using a linear search process.
+
+\Solution Solution for p12.7. goes here
+\end{document}
