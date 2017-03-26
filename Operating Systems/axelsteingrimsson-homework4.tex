@@ -73,6 +73,7 @@
 					\end{tabular}
 				\end{adjustbox}
 			\end{table}
+			SPN:
 			\begin{table}[H]
 				\centering
 				\begin{adjustbox}{width=1\textwidth}
@@ -83,13 +84,14 @@
 					\end{tabular}
 				\end{adjustbox}
 			\end{table}
+			SRT:
 			\begin{table}[H]
 				\centering
 				\begin{adjustbox}{width=1\textwidth}
 					\begin{tabular}{lcllllllllllllllllll}
 					\hline
-					\multicolumn{1}{|l|}{\textbf{P1}} & \multicolumn{1}{c|}{\textbf{P1}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} \\ \hline
-					\multicolumn{1}{c}{0}	& \multicolumn{2}{c}{4}&\multicolumn{1}{c}{6}	& 	&	&  \multicolumn{2}{c}{14}	&\multicolumn{0}{c}{16}	& 	&	& 	& \multicolumn{2}{c}{28}	&	&	&	&	& 40                              
+					\multicolumn{1}{|l|}{\textbf{P1}} & \multicolumn{1}{c|}{\textbf{P1}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P3}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P4}} & \multicolumn{1}{l|}{\textbf{P4}} & \multicolumn{1}{l|}{\textbf{P4}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P2}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} & \multicolumn{1}{l|}{\textbf{P5}} \\ \hline
+					\multicolumn{1}{c}{0}	& \multicolumn{2}{c}{4}&\multicolumn{1}{c}{6}	& 	&	&  \multicolumn{2}{c}{14}	& \multicolumn{1}{c}{16}	& 	&\multicolumn{2}{c}{22}	& 	& 	&\multicolumn{2}{c}{30}	&	&	&	& 40                              
 					\end{tabular}
 				\end{adjustbox}
 			\end{table}
@@ -100,8 +102,11 @@
 
 
 	
-\Solution SPN: $0 + 26 + 4 - 6 + 2 = 22/4 = 5.5$
-
+\Solution 
+Turnaround time: \\
+SPN: $4 + 12 + 8 + 6 + 10 = 40/5 = 8$ \\ SRT: $(4 - 0) + (30-2) + (14-6) + (22-16) + (40-20) = 4 + 28 + 8 + 6 + 20 = 66/5 = 13.2$
+Relative Delay: \\
+SPN: $1 + 1 + 1 + 1 + 1 = 5/5 = 1$ \\ SRT: $4/4 + 28/12 + 8/8 + 6/6 + 20/10 = 1 + 2.333 + 1 + 1 + 2= 7.333/5 = 1.46$
 
 ~\\
 \Problem{9.2} What factors determine the time quantum in round robin scheduling? Consider the system:
@@ -119,31 +124,41 @@
 	\end{table}
 	Context switch takes a time of 1 unit. Compute the average turnaround time of the processes for the time quanta $q = 2$, $q = 4$ and $q = 8$ respectively.
 	
-\Solution Solution for p9.2. goes here
+\Solution Turnaround time: \\
+q = 2:$ (45 - 0) + (27 - 2) + (54 - 8) + (21 - 10) = 45 + 25 + 46 + 11 = 127/4 = 31.75$ \\
+q = 4:$ (37 - 0) + (27 - 2) + (48 - 8) + (19 - 10) = 37 + 25 + 40 + 9 = 111/4 = 27.75$ \\
+q = 8:$ (33 - 0) + (15 - 2) + (44 - 8) + (28 - 10) = 33 + 13 + 36 + 18 = 100/4 = 25$ \\
+By increasing the quantum there is less overhead for each context switch so there is less total time, and the average turnaround time is less. 
+
 
 ~\\
 \subsection*{Chapter 10}
 
 \Review{10.1} List and briefly define five different categories of synchronization granularity.
 
-\Solution Solution for r10.1. goes here
+\Solution  
+Independent: Multiple unrelated processes.\\
+Fine grained: Parallelism inherent in a single instruction stream.\\
+Medium grained: Parallel processing or multitasking within a single application. \\
+Coarse grained: A multiprogramming environment where processes are split into large sized tasks.\\
+Very Coarse grained: Distributed processing across network nodes to form a single computing environment.\\
 
 ~\\
 \Review{10.2} What grain size of parallelism is appropriate for a multiprogrammed uniprocessor?
 
-\Solution Solution for r10.2. goes here
+\Solution Medium grained parallelism. 
 
 ~\\
 \Review{10.3} For which kinds of applications is gang scheduling of threads most useful?
 
-\Solution Solution for r10.3. goes here
+\Solution For applications that can have a set of related threads that can be scheduled to run on a set of processors at the same time, on a one-to-one basis.
 
 ~\\
 \subsection*{Chapter 11}
 
 \Review{11.4} Why would you expect improved performance using a double buffer rather than a single buffer for I/O?
 
-\Solution Solution for r11.4. goes here
+\Solution A double buffer means that OS doesn't have to wait for I/O so it can transfer data from one buffer while the other one is being filled.
 
 ~\\
 \Problem{11.3} Consider a disk drive with 4000 cylinders, numbered from 0 to 3999. The request queue has the following composition:
@@ -161,7 +176,10 @@
 		\item C-SCAN
 	\end{enumerate}
 
-\Solution Solution for p11.3. goes here
+\Solution 	 FIFO: 143 + 86 + 1470 + 913 + 1774 + 948 + 1509 + 1022 + 1750 + 130 = 7081. So seek distance is 7081.\\
+		 SSTF: 143 + 130 + 86 + 913 + 948 + 1022 + 1470 + 1509 + 1750 + 1774 = 1745. So seek distance is 1745.\\
+		 SCAN: 143 + 913 + 948 + 1022 + 1470 + 1509 + 1750 + 1774 + 4999 + 130 + 86. So seek distance is 9769.\\
+		 C-SCAN: 143 + 913 + 948 + 1022 + 1470 + 1509 + 1750 + 1774 + 4999 + 0 + 86 + 130. So seek distance is 9985.\\
 
 ~\\
 \subsection*{Chapter 12}
@@ -173,7 +191,9 @@
 		\item Total size of the file.
 	\end{enumerate}
 	
-\Solution Solution for p12.1. goes here
+\Solution a) 3096/140 = 22.11, so 22 records per block. Blocking factor is 22.\\
+	b) 3000/22 = 136.36, so 137 blocks. \\
+	c) 2000/22 = 90.9, so 91 blocks. 3096 * 91 + 512*90 = 327816 bytes. 
 
 ~\\
 \Problem{12.4} For the B-tree in Figure 12.4c, show the result of inserting the key 97.
@@ -181,10 +201,12 @@
 
 	\end{figure}
 	
-\Solution Solution for p12.4. goes here
+\Solution The right branch will split into two, [73, 85] and [90, 96, 97]. The 88 will be moved to the root [23, 39, 51, 61, 71] which will then be split into two [23, 39] and [61, 71, 88]. Then 51 will be moved to be a new root node [51].
 
 ~\\
 \Problem{12.7} A sequential file is stored in a disk occupying 100 contiguous disk blocks. The disk has an average rotational delay of 2.5 ms. The time taken to seek the head of the drive to the required cylinder is 25 ms and the time taken to read a block is 0.25 ms. Find the minimum, maximum, and average time to search for a record using a linear search process.
 
-\Solution Solution for p12.7. goes here
+\Solution Minimum: 25 + (2.5 + 0.25)*1 (the number of blocks in the best case) = 27.75ms \\
+Average: 25 + (2.5 + 0.25)*50 (the number of blocks in the best case) = 162.5ms\\
+Maximum: 25 + (2.5 + 0.25)*100 (the number of blocks in the best case) = 300ms
 \end{document}
