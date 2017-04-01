@@ -146,6 +146,13 @@ Use this definition of threshold graphs to prove:
 \end{subprob}
 Note: \emph{Every} threshold graph can be built by repeatedly doing the two operations above (no proof required).
 \end{problem}
+\begin{solution}
+	a) Let $a_v = B =1$ for all $v$. The only independet sets in $K_n$ are sets with one vertex, so this shows, that $K_n$ is a threshold graph. \\
+	b)Let $v$ be the isolated vertex. Define $a_v=0$. Now, this vertex itself is isolated, and if it is part of an isolated subset, it does not change the sum, and so it stays a threshold graph. \\
+	c) Case 1: All values could be chosen as 0, so all n vertices before are isloated. For each of these vertices set $a_v=1$. For the new vertex set $a_v=n+1$ and set $B=n+2$. Therefor it is threshold. \\
+	Case 2: All other cases: Set the $a_v=B$ for the new vertex. So itself is isolated but adding any other vertex rises the value. \\
+	d) By the hint, we know that they are build up by the operations of b) and c). So we can start with one vertex and create the threshold graph. Every dominating vertex is put to the set, that is a clique and every isolated vertex to the other set. Our first vertex could be put in either of the sets. So, every threshold graph is a split graph.
+\end{solution}
 
 
 
@@ -156,6 +163,11 @@ Note: \emph{Every} threshold graph can be built by repeatedly doing the two oper
 \item (5 points) Let $\{[a_1, b_1], \ldots, [a_n, b_n]\}$ be an interval representation of a graph $G$.
 Show that $\{[a_1, b'_1], \ldots, [a_n, b'_n]\}$, where $$b'_i = \max_j \{b_j : \mbox{$[a_j, b_j]\cap [a_i, b_i] \neq \emptyset$} \},$$ is an interval representation of the graph $G^2$.
 \end{problem}
+\begin{solution}
+	We show that for an arbitray vertex, all other vertices that have maximum distance of two in the original graph are adjacent with the new representation. Therefor, we show that they intersect the nwe interval. \\
+	Wlog we can look at the vertex, represented by the interval $[a_1, b_1]$. The old neighbors are included easily because $b_i' \geq b_i$. So take a vertex with distance two to this vertex. Either the interval is completely on the left or the right of $[a_1, b_1]$. If it is on the right, there exists a vertex representing interval, that intersects both of them. Therefor $b_1'$ is high enough, so this two intervals intersect. For an interval completely on the left, the statement is the same, just with the changing $b_i'$ of the other interval. In total it is a representation og $G^2$.
+\end{solution}
+
 
 
 \begin{problem}
@@ -201,18 +213,34 @@ Show that $\{[a_1, b'_1], \ldots, [a_n, b'_n]\}$, where $$b'_i = \max_j \{b_j : 
 \begin{problem}
  \item (5 points) Prove that the complement of a triangle-free graph is claw-free.
 \end{problem}
+\begin{solution}
+	Assume there is a claw in the complement. The complement of the complement is the original graph again. So we look at the complement of a claw. It is a triangle, as shown in the following picture. Therefor the original graph needs to have a triangle if the complement has a claw.\\
+	\includegraphics{A13.jpg}
+\end{solution}
 
 \begin{problem}
  \item (5 points) Prove that for any graph $G$, the line graph $L(G)$ is claw-free. 
 \end{problem}
+\begin{solution}
+	If there is claw in L(G), the center vertex of this claw has 3 neighbors. An edge is ending in maximum 2 vertices, so in G two of the adjacent edges need to share a vertex. This would mean, they are connected as well, which is a contradiction to the definition of a claw. Therefor, L(G) is claw-free
+\end{solution}
 
 \begin{problem}
  \item (7 points) Prove that for any claw-free graph $G$, $\frac{\Delta(G)}{2} \le \chi(G)\le \Delta(G)+1$. 
 \end{problem}
+\begin{solution}
+	We have already shown the upper bound for $\chi(G)$by greedy coloring in th lecture. If $\Delta(G) \leq 2$, the claim is trivial, because you need at least one color. So assume $\Delta(G) >2$. Let$v$ be a vertex with maximum degree and let $N(v)$ be the neighborhood of this vertex. The induced graph $ [ N(v)] $ can maximum contain two cliques, because otherwise you could choose one vertex out of three cliques, that create a claw. Let the bigger or equal clique be $S$. We can conclude 
+	$$ \chi(G) \geq \chi(S\cup \{v\} ) = |S| \geq \frac{\Delta(G)}{2}. $$
+\end{solution}
 
 \begin{problem}
  \item (6 points) Prove that every claw-free interval graph is a unit interval graph (i.e. the class of claw-free interval graphs is precisely the class of unit interval graphs).
 \end{problem}
+\begin{solution}
+	If there is a claw, you need three other intervals, that intersect one interval, but not each other. This is obviously not possible for intervals with unit length. \\
+	If there is no claw, there are maximum two sets of other intervals, that are not allowed to intersect. This is possible by increasing the length to the other direction. This holds for every vertex. \\
+	In total both sets are equivalent. 
+\end{solution}
 
 
 
