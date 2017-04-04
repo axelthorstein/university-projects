@@ -9,6 +9,17 @@
 			margin: 10px 0px 10px 0px;
 			background-color: grey;
 		}
+		.glyphicon {
+		  background: black;
+		}
+
+		.glyphicon-ok {
+		  background: blue;
+		}
+
+		.clicked {
+		  background: brown;
+		}
 		</style>
 		<script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
@@ -18,6 +29,9 @@
 	</head>
 
 	<body>
+		<span>Test</span>
+<a class="link" href="#test">tests</a>
+<span>Testss</span>
 		<div id="hide">
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ornare ut justo eget maximus. Vestibulum consectetur tortor sed quam viverra, viverra mattis risus malesuada. Nulla a ante magna. Morbi pellentesque justo nec feugiat efficitur. Donec euismod, quam in posuere molestie, ex elit convallis dolor, ac gravida mauris ligula vel nisl. Aenean maximus ullamcorper nibh, nec accumsan mauris rutrum vel. Pellentesque felis tortor, pretium in sodales in, facilisis eget libero. In in erat non eros dignissim vulputate vitae eget tellus. Donec vulputate, erat sit amet commodo tristique, risus nunc sodales dui, elementum accumsan leo nunc ut neque. Vestibulum vehicula, turpis non dignissim tincidunt, leo lorem fringilla dolor, consequat posuere mauris nulla ut nulla.
 		</div>
@@ -47,6 +61,10 @@
 		<p>Enter Date: <input type = "text" id = "datepicker"></p>
 
 	<script type="text/javascript">
+	$("a.link").click(function (e) {
+		var i = $('<span>hell</span>').addClass('glyphicon glyphicon-ok');
+		$(this).addClass("clicked").append(i);
+	});
 
 	$(document).ready(function(){
 		$(".news").addClass("latest");
